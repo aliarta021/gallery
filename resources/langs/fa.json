@@ -1,0 +1,350 @@
+{
+  "language": "فارسی",
+  "common": {
+    "edit": "ویرایش",
+    "submit": "تایید",
+    "cancel": "لغو",
+    "color": "رنگ",
+    "package": "مرسوله",
+    "seeMore": "مشاهده بیشتر",
+    "more": "بیشتر",
+    "seeLess": "مشاهده کمتر",
+    "sortBy": "مرتب سازی بر اساس",
+    "continue": "ادامه",
+    "free": "رایگان",
+    "currency": "ت",
+    "soon": "به زودی!",
+    "max": "حداکثر",
+    "clear": "پاک کردن",
+    "clearAll": "پاک کردن همه",
+    "applyFilter": "اعمال فیلتر",
+    "enter": "ورود",
+    "gender": {
+      "male": "آقا",
+      "female": "خانم",
+      "unspecified": "تعیین نشده"
+    },
+    "datePicker": {
+      "cancel": "لغو",
+      "confirm": "تایید"
+    },
+    "later": "بعدا",
+    "feedback": "بازخورد",
+    "button": {
+      "submit": "ثبت",
+      "cancel": "لغو"
+    },
+    "comingSoon": "بزودی",
+    "options": "گزینه ها",
+    "nothingFound": "موردی یافت نشد",
+    "relativeTime": {
+      "fewMoments": "چند ثانیه پیش",
+      "aMinute": "یک دقیقه پیش",
+      "minutes": "{m} دقیقه پیش",
+      "anHour": "یک ساعت پیش",
+      "hours": "{h} ساعت پیش",
+      "aDay": "یک روز پیش",
+      "days": "{d} روز پیش",
+      "aMonth": "یک ماه پیش",
+      "months": "{m} ماه پیش",
+      "aYear": "یک سال پیش",
+      "years": "{y} سال پیش"
+    },
+    "share": {
+      "text": "فروشگاه \"{name}\" را در پی بای ببین:\n{link}"
+    },
+    "choose": "انتخاب کنید",
+    "separator": "و",
+    "copyrightText": "تمام حقوق پی‌بای متعلق به شرکت آواپرداز کیهان کریمان می‌باشد."
+  },
+  "err": {
+    "tryAgain": "مشکلی پیش آمده، لطفا دوباره تلاش کنید"
+  },
+  "errPage": {
+    "title": "صفحه ای یافت نشد",
+    "description": "ممکن است آدرس اشتباه وارد شده باشد یا صفحه پاک شده باشد",
+    "goBack": "بازگشت"
+  },
+  "validator": {
+    "requiredField": "فیلد اجباری میباشد",
+    "wrongPhoneNumber": "شماره موبایل اشتباه است",
+    "onlyNumbers": "فقط مقادیر عددی مجاز است",
+    "nationalNumberInvalid": "کد ملی نامعتبر میباشد",
+    "priceMoreThanAllowed": "مبلغ وارد شده بیشتر از حد مجاز است!",
+    "priceCanNotBeLess": "قیمت نمیتواند کمتر از {} تومان باشد!",
+    "priceCanNotBeMore": "قیمت نمیتواند بیشتر از {} تومان باشد!"
+  },
+  "rating": {
+    "very_bad": "خیلی بد",
+    "bad": "بد",
+    "middle": "متوسط",
+    "good": "خوب",
+    "excellent": "عالی"
+  },
+  "auth": {
+    "privacyPolicy": {
+      "prefix": "با ورود به پی بای تمام ",
+      "middle": "شرایط و قوانین",
+      "suffix": " مورد تایید و قبول شماست."
+    },
+    "logout": "خروج",
+    "login": {
+      "title": "ورود",
+      "page": {
+        "title": "شماره موبایل خود را وارد کنید",
+        "subtitle": "سپس کد ارسال شده به شماره موبایل خود را وارد کنید",
+        "cta": "ادامه"
+      }
+    },
+    "loginByCode": {
+      "title": "ورود با کد تایید",
+      "page": {
+        "title": "تایید شماره موبایل",
+        "subtitle": "یک کد تایید 4 رقمی برای شما ارسال شد"
+      },
+      "resend": {
+        "title": "ارسال مجدد",
+        "caption": "{} تا ارسال مجدد کد"
+      }
+    },
+    "loginByPassword": {
+      "title": "ورود با کلمه عبور",
+      "page": {
+        "title": "ورود با کلمه عبور",
+        "subtitle": "در صورت فراموشی رمز عبور میتوانید با کد تایید یکبار مصرف وارد شوید"
+      }
+    },
+    "signup": {
+      "title": "ثبت نام",
+      "page": {
+        "title": "ثبت نام کاربر جدید",
+        "subtitle": "جهت ثبت نام کد تایید 4 رقمی ارسال شده را وارد کنید"
+      }
+    },
+    "form": {
+      "phone": {
+        "label": "موبایل",
+        "hint": "09xxxxxxxxx"
+      },
+      "password": {
+        "label": "کلمه عبور",
+        "hint": "کلمه عبور خود را وارد کنید"
+      }
+    },
+    "user": {
+      "firstName": "نام",
+      "lastName": "نام خانوادگی",
+      "gender": "جنسیت",
+      "phoneNumber": "شماره موبایل",
+      "nationalCode": "کد ملی",
+      "birthDate": "تاریخ تولد",
+      "job": "شغل",
+      "email": "پست الکترونیکی"
+    }
+  },
+  "categories": {
+    "title": "دسته بندی ها"
+  },
+  "scanQr": {
+    "title": "اسکن",
+    "subtitle": "اسکن کنید!",
+    "qrNotValid": "QR کد اسکن شده معتبر نیست !"
+  },
+  "home": {
+    "title": "خانه",
+    "searchHint": "دنبال چه چیزی میگردید؟"
+  },
+  "chooseCity": {
+    "title": "انتخاب شهر"
+  },
+  "profile": {
+    "title": "پروفایل",
+    "accountInfo": {
+      "title": "اطلاعات حساب",
+      "personalInfo": {
+        "title": "اطلاعات فردی",
+        "enterField": "{} خود را وارد کنید",
+        "fistName": "نام",
+        "lastName": "نام خانوادگی",
+        "gender": "جنسیت"
+      },
+      "interests": {
+        "title": "علاقه مندی ها",
+        "subtitle": "با انتخاب علاقه\u200Cمندی ها، در صفحه اصلی تمام کالاها یا خدماتی که دوست دارید را ببینید"
+      }
+    },
+    "completeInformation": {
+      "title": "تکمیل اطلاعات",
+      "form": {
+        "firstName": {
+          "label": "نام",
+          "hint": "نام خود را وارد کنید"
+        },
+        "lastName": {
+          "label": "نام خانوادگی",
+          "hint": "نام خانوادگی خود را وارد کنید"
+        },
+        "gender": {
+          "label": "جنسیت"
+        },
+        "birthday": {
+          "label": "تاریخ تولد",
+          "hint": "xxxx/xx/xx"
+        }
+      }
+    },
+    "comments": {
+      "title": "نظرات",
+      "empty": {
+        "subtitle": "تاکنون هیچ نظری ثبت نکرده اید"
+      },
+      "menu": {
+        "delete": "حذف"
+      }
+    },
+    "favorites": {
+      "title": "علاقه مندی ها"
+    },
+    "shop": {
+      "yourShop": "فروشگاه شما"
+    }
+  },
+  "comment": {
+    "status": {
+      "pending": "در انتظار تایید",
+      "approved": "تایید شده",
+      "rejected": "رد شده"
+    }
+  },
+  "club": {
+    "title": "باشگاه مشتریان",
+    "subtitle": "با عضویت در باشگاه مشتریان فروشگاه ها میتوانید از خدمات ویژه آنها بهره مند شوید",
+    "cancelMembership": "لغو عضویت",
+    "empty": {
+      "subtitle": "شما تاکنون عضو باشگاه مشتریان هیچ فروشگاهی نشدید"
+    }
+  },
+  "shop": {
+    "talk": "گفت و گو کنید",
+    "search": {
+      "hint": "نام کالا را وارد کنید"
+    },
+    "tab": {
+      "shopInformation": {
+        "title": "اطلاعات فروشگاه",
+        "contentTitle": "درباره فروشگاه"
+      },
+      "items": {
+        "title": "کالاها",
+        "contentTitle": "کالاهای فروشگاه",
+        "searchHint": "جستجو در کالاها",
+        "filter": {
+          "title": "فیلتر های کالاها"
+        }
+      },
+      "comments": {
+        "title": "نظرات کاربران",
+        "empty": {
+          "title": "اولین نظر را شما ثبت کنید"
+        }
+      }
+    },
+    "rate": {
+      "title": "امتیاز فروشگاه",
+      "from5": "از 5",
+      "timelySupply": "تامین به موقع",
+      "commitmentToSend": "تعهد ارسال",
+      "noReference": "بدون مرجوعی",
+      "satisfactionWithItems": "رضایت از محصولات/خدمات"
+    },
+    "comments": {
+      "suggestion": {
+        "suggest": "توصیه میکنم",
+        "notSuggest": "توصیه نمیکنم"
+      },
+      "commentsCount": "{} نظر"
+    },
+    "addComment": {
+      "title": "ثبت نظر",
+      "subtitle": "نظر شما روی فروشگاه {}:",
+      "form": {
+        "overallRate": {
+          "title": "امتیاز کلی"
+        },
+        "suggestion": {
+          "title": "آیا خرید از این فروشگاه را توصیه می کنید؟"
+        },
+        "commentTitle": {
+          "title": "عنوان نظر",
+          "hint": "عنوان نظر را وارد کنید"
+        },
+        "commentDescription": {
+          "title": "توضیحات نظر",
+          "hint": "توضیحات نظر را وارد کنید"
+        }
+      },
+      "button": {
+        "submit": "ثبت نظر",
+        "cancel": "لغو"
+      },
+      "success": "نظر شما ثبت شد و پس از تایید نمایش داده خواهد شد"
+    },
+    "slider": {
+      "title": "{}\nفروشگاه",
+      "shopCount": "{} فروشگاه",
+      "showMore": "مشاهده\nبیشتر"
+    },
+    "list": {
+      "filter": {
+        "title": "فیلتر ها",
+        "subtitle": "فیلتر های فروشگاه",
+        "allCategoryShops": "همه فروشگاه های \"{}\"",
+        "tile": {
+          "sort": "مرتب سازی",
+          "category": "دسته بندی"
+        },
+        "sortBy": {
+          "newest": "جدید ترین ها",
+          "oldest": "قدیمی ترین ها",
+          "popular": "محبوب ترین ها",
+          "mostRate": "بیشترین امتیاز"
+        }
+      },
+      "count": "تعداد فروشگاه ها",
+      "empty": {
+        "title": "هیچ فروشگاهی با این فیلتر ها پیدا نشد"
+      }
+    }
+  },
+  "cart": {
+    "title": "سبد خرید",
+    "ctaCheckout": "پرداخت",
+    "empty": {
+      "title": "سبد خرید خالی است"
+    },
+    "price": {
+      "total": "قیمت کل",
+      "items": "قیمت خدمات",
+      "discount": "میزان تخفیف"
+    }
+  },
+  "staticPage": {
+    "about": "درباره پی بای",
+    "contact": "تماس با ما",
+    "shoppingGuide": "راهنمای خرید",
+    "becomeSeller": "فروشنده شوید"
+  },
+  "price": {
+    "title": "مبلغ",
+    "totalPrice": "مبلغ کل",
+    "separator": "تا",
+    "from": "از"
+  },
+  "item": {
+    "buttons": {
+      "add": "افزودن",
+      "addToCart": "افزودن به سبد خرید",
+      "viewCart": "مشاهده سبد خرید"
+    }
+  }
+}

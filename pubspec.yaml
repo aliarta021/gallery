@@ -1,91 +1,149 @@
-name: revolution_1401
-description: A flutter project for iran revolution 1401
-
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+1
+name: revolution1401
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.0.0+1
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: ">=2.17.0 <3.0.0"
 
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  # Common
+  device_info_plus: ^3.2.2
+  easy_localization: ^3.0.0
+  go_router: ^3.0.4
+  provider: ^6.0.2
+  logger: ^1.1.0
+  otp_autofill: ^1.1.0
+  url_launcher: ^6.0.20
+  jwt_decoder: ^2.0.1
+  flutter_cache_manager: ^3.3.0
+  sentry_flutter: ^6.5.1
+  after_layout: ^1.2.0
+  # UI / Component
+  bot_toast: ^4.0.1
+  pinput: ^1.2.0
+  flutter_svg: ^1.0.3
+  shimmer: ^2.0.0
+  percent_indicator: ^4.0.0
+  flutter_blurhash: ^0.6.4
+  cached_network_image: ^3.2.0
+  carousel_slider: ^4.0.0
+  separated_row: ^2.0.0
+  separated_column: ^2.0.0
+  glass_kit: ^2.0.1
+  flutter_native_splash: ^2.1.3+1
+  persian_datetime_picker: ^2.4.0
+  measured_size: ^1.0.0
+  custom_pop_up_menu: ^1.2.3+1
+  sticky_headers: ^0.2.0
+  palette_generator: ^0.3.3
+  flutter_rating_bar: ^4.0.0
+  pull_to_refresh: ^2.0.0
+  # Animations
+  dough: ^1.0.2
+  flutter_staggered_animations: ^1.0.0
+  flutter_animator: ^3.2.1
+  # Form
+  flutter_form_builder: ^7.1.1
+  form_builder_validators: ^7.7.0
+  # NoSQL Database
+  hive: ^2.0.6
+  hive_flutter: ^1.1.0
+  # API
+  retrofit: ^3.0.1+1
+  dio: ^4.0.4
+  json_serializable: ^6.1.5
+  dio_cookie_manager: ^2.0.0
+  cookie_jar: ^3.0.1
+  # Firebase
+  firebase_core: ^1.13.1
+  firebase_messaging: ^11.2.11
+  # Utils
+  mobile_scanner: ^1.1.0
+  share_plus: ^4.0.4
+  shamsi_date: ^1.0.1
+  flutter_html: ^3.0.0-alpha.5
+  freezed_annotation: ^2.0.3
+  connectivity_plus: ^2.3.5
+  flutter_phoenix: ^1.0.0
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
+  flutter_lints: ^2.0.1
+  build_runner: ^2.1.8
+  hive_generator: ^1.1.2
+  retrofit_generator: ^4.0.1
+  freezed: ^2.0.3+1
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+#  flutter_launcher_icons: ^0.9.2
+  # replace when this package update and bug fixed
+  flutter_launcher_icons:
+    git:
+      url: https://github.com/marcobazzani/flutter_launcher_icons.git
+      ref: patch-1
+  flutter_app_name: ^0.1.1
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/launcher/icon.png"
+  image_path_android: "assets/launcher/icon.png"
+  adaptive_icon_background: "assets/launcher/background.png"
+  adaptive_icon_foreground: "assets/launcher/foreground.png"
 
-# The following section is specific to Flutter packages.
+flutter_app_name:
+  name: "Revolution1401"
+
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - resources/langs/
+    - assets/images/
+    - assets/emojis/
+    - assets/launcher/
+  fonts:
+    - family: yekanBakh
+      fonts:
+        - asset: resources/fonts/yekan-bakh/fa-en/yekan-bakh-fa-en-08-fat.ttf
+          weight: 900
+        - asset: resources/fonts/yekan-bakh/fa-en/yekan-bakh-fa-en-07-heavy.ttf
+          weight: 800
+        - asset: resources/fonts/yekan-bakh/fa-en/yekan-bakh-fa-en-06-bold.ttf
+          weight: 700
+        - asset: resources/fonts/yekan-bakh/fa-en/yekan-bakh-fa-en-05-medium.ttf
+          weight: 600
+        - asset: resources/fonts/yekan-bakh/fa-en/yekan-bakh-fa-en-04-regular.ttf
+          weight: 500
+        - asset: resources/fonts/yekan-bakh/fa-en/yekan-bakh-fa-en-03-light.ttf
+          weight: 400
+        - asset: resources/fonts/yekan-bakh/fa-en/yekan-bakh-fa-en-02-thin.ttf
+          weight: 300
+        - asset: resources/fonts/yekan-bakh/fa-en/yekan-bakh-fa-en-01-hairline.ttf
+          weight: 200
+        - asset: resources/fonts/yekan-bakh/fa-en/yekan-bakh-fa-en-01-hairline.ttf
+          weight: 100
+    - family: yekanBakhFaNum
+      fonts:
+        - asset: resources/fonts/yekan-bakh/fa-num/yekan-bakh-fa-num-08-fat.ttf
+          weight: 900
+        - asset: resources/fonts/yekan-bakh/fa-num/yekan-bakh-fa-num-07-heavy.ttf
+          weight: 800
+        - asset: resources/fonts/yekan-bakh/fa-num/yekan-bakh-fa-num-06-bold.ttf
+          weight: 700
+        - asset: resources/fonts/yekan-bakh/fa-num/yekan-bakh-fa-num-05-medium.ttf
+          weight: 600
+        - asset: resources/fonts/yekan-bakh/fa-num/yekan-bakh-fa-num-04-regular.ttf
+          weight: 500
+        - asset: resources/fonts/yekan-bakh/fa-num/yekan-bakh-fa-num-03-light.ttf
+          weight: 400
+        - asset: resources/fonts/yekan-bakh/fa-num/yekan-bakh-fa-num-02-thin.ttf
+          weight: 300
+        - asset: resources/fonts/yekan-bakh/fa-num/yekan-bakh-fa-num-01-hairline.ttf
+          weight: 200
+        - asset: resources/fonts/yekan-bakh/fa-num/yekan-bakh-fa-num-01-hairline.ttf
+          weight: 100
