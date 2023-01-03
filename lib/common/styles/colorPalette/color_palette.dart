@@ -66,9 +66,9 @@ class ColorPalette {
 
   static ColorPalette light = ColorPalette(
     primary: ColorMode(
-      main: const Color(0xff2F3BBD),
-      light: const Color(0xff4B57D6),
-      dark: const Color(0xff1824A3),
+      main: const Color(0xfff44336),
+      light: const Color(0xffff7961),
+      dark: const Color(0xffba000d),
       background: const Color(0xffE6E7FF),
     ),
     success: ColorMode(
@@ -119,7 +119,7 @@ class ColorPalette {
     toolbarShadow: const Color(0x3B000000),
     splash: const Color(0x0F000000),
     disabled: const Color(0xffe3e3e3),
-    cursor: const Color(0xff525ddb),
+    cursor: const Color(0xfff44336),
     textSelectionColor: const Color(0x364b57d6),
     icon: const Color(0xff919199),
     darkWhite: const Color(0xffF0F0F5),
