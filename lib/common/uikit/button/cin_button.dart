@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:revolution1401/common/styles/colorPalette/color_palette.dart';
+import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/common/uikit/loading_widget.dart';
 import 'package:revolution1401/common/uikit/switcher.dart';
 import 'package:revolution1401/common/utils/logging/log_helper.dart';
@@ -18,6 +18,7 @@ class CinButton extends StatefulWidget {
       this.loading,
       this.height = 48,
       this.color,
+      this.disabledColor,
       this.maxWidth,
       this.minWidth,
       this.borderSide = BorderSide.none,
@@ -25,6 +26,7 @@ class CinButton extends StatefulWidget {
       Key? key,
       this.icon,
       this.iconSize = 20,
+      this.borderRadius,
       this.foregroundColor,
       this.margin})
       : width = widthFromHeight ? height : (width ?? double.infinity),
@@ -38,6 +40,7 @@ class CinButton extends StatefulWidget {
   final double width;
   final double height;
   final Color? color;
+  final Color? disabledColor;
   final double? maxWidth;
   final double? minWidth;
   final BorderSide borderSide;
@@ -45,6 +48,7 @@ class CinButton extends StatefulWidget {
   final IconData? icon;
   final EdgeInsets? margin;
   final double iconSize;
+  final BorderRadiusGeometry? borderRadius;
   final Color? foregroundColor;
 
   @override
@@ -68,7 +72,7 @@ class CinButtonState extends State<CinButton> {
         ),
         child: ElevatedButton(
           onPressed: widget.enabled
-              ? (!finalLoading
+              ? (!finalLoading && widget.enabled
                   ? () async {
                       if (mounted) {
                         setState(() => loading = true);
@@ -105,25 +109,23 @@ class CinButtonState extends State<CinButton> {
                     (Set<MaterialState> states) => states
                             .contains(MaterialState.disabled)
                         ? (widget.type == ButtonType.primary
-                            ? (widget.color ?? Theme.of(context).primaryColor)
-                                .withOpacity(0.1)
-                            : ColorPalette.of(context)
-                                .background
-                                .withOpacity(0.45))
+                            ? widget.disabledColor ??
+                                Theme.of(context).primaryColor.withOpacity(0.1)
+                            : widget.disabledColor ??
+                                context.colors.background.withOpacity(0.45))
                         : widget.color ??
                             (widget.type == ButtonType.primary
                                 ? Theme.of(context).primaryColor
-                                : ColorPalette.of(context).background)),
+                                : context.colors.background)),
                 shadowColor: MaterialStateProperty.all(
-                    (widget.color ?? ColorPalette.of(context).primary)
-                        .withOpacity(0.6)),
+                    (widget.color ?? context.colors.primary).withOpacity(0.6)),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: widget.borderRadius ?? BorderRadius.circular(6),
                     side: (widget.enabled && !finalLoading)
                         ? widget.borderSide
                         : widget.borderSide
-                            .copyWith(color: ColorPalette.of(context).divider),
+                            .copyWith(color: context.colors.divider),
                   ),
                 ),
                 padding: MaterialStateProperty.all(const EdgeInsets.all(4)),
@@ -131,10 +133,10 @@ class CinButtonState extends State<CinButton> {
           child: Builder(builder: (_) {
             Color foregroundColor = widget.foregroundColor ??
                 (widget.type == ButtonType.primary
-                    ? ColorPalette.of(context).white
+                    ? context.colors.white
                     : widget.enabled
-                        ? ColorPalette.of(context).textCaption
-                        : ColorPalette.of(context).textDisabled);
+                        ? context.colors.textCaption
+                        : context.colors.textDisabled);
             return Switcher(
                 child: finalLoading
                     ? Center(
@@ -159,7 +161,7 @@ class CinButtonState extends State<CinButton> {
                                         .button!
                                         .copyWith(
                                             color: foregroundColor,
-                                            fontWeight: FontWeight.w800)),
+                                            fontWeight: FontWeight.normal)),
                             ],
                           ),
                         )));

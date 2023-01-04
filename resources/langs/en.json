@@ -1,5 +1,26 @@
 {
   "language": "English",
+  "iran": "Iran",
+  "revolution": "Revolution",
+  "women": "Women",
+  "life": "Life",
+  "freedom": "Freedom",
+  "slogan": "With slogan",
+  "skip": "Skip",
+  "story": {
+    "title": "Revolution Story"   
+  },
+  "initial": {
+    "revolution": {
+      "title": "Revolution 1401"
+    },
+    "movment": {
+      "tittle": "Iranian women's movement"
+    },
+    "renaissance": {
+      "title": "Renaissance"
+    }
+  },
   "common": {
     "edit": "Edit",
     "submit": "Submit",
