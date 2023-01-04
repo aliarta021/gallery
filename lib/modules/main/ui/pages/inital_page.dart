@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class InitialPage extends StatelessWidget {
@@ -6,6 +5,15 @@ class InitialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      home: Scaffold(
+        body: Column(
+          children: [
+            Text('test 1'),
+            Text('test 2'),
+          ],
+        ),
+      ),
+    );
   }
 }

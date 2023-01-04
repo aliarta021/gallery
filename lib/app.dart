@@ -79,7 +79,6 @@ class App extends StatelessWidget {
                           future: Future.wait([
                             // Future.delayed(const Duration(seconds: 2)),
                             // Provider.of<HomeBloc>(context, listen: false).load()
-                            context.read<MainBloc>().checkSeenFirstPage()
                           ]),
                           builder: (context, snapshot) => snapshot.hasData
                               ? (child ?? const SizedBox.shrink())
