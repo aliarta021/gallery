@@ -1,16 +1,20 @@
 import 'dart:io';
+import 'dart:js';
 
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:revolution1401/common/router/ui/err_page.dart';
+import 'package:provider/provider.dart';
+import 'package:revolution1401/modules/main/bloc/main_bloc.dart';
+import 'package:revolution1401/modules/main/ui/pages/inital_page.dart';
 
 class R {
   static const String main = '/';
 
   static const String home = '/home';
+
+  static const String initialPage = '/initial_page';
 
   static const String completeInformation = '/complete-information';
 
@@ -46,16 +50,22 @@ class R {
 
 class AppRouter {
   late final GoRouter router = GoRouter(
+    redirect: (context, state) async {
+      if ((await context.read<MainBloc>().checkSeenFirstPage())) {
+        return R.initialPage;
+      } else {
+        return null;
+      }
+    },
     debugLogDiagnostics: true,
     observers: <NavigatorObserver>[BotToastNavigatorObserver()],
-    urlPathStrategy: UrlPathStrategy.path,
     errorPageBuilder: (context, state) => MaterialPage<void>(
       key: state.pageKey,
       restorationId: state.pageKey.value,
       child: Container(),
     ),
     routes: <GoRoute>[
-      // _route(path: R.main, pageBuilder: (state) => const MainPage()),
+      _route(path: R.initialPage, pageBuilder: (state) => const InitialPage()),
     ],
   );
 
