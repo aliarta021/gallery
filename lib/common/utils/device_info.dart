@@ -26,11 +26,11 @@ Future<DeviceInfo?> getDeviceData() async {
   } else if (Platform.isAndroid) {
     AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
     return DeviceInfo(
-        systemVersion: androidDeviceInfo.version.release,
-        apiLevel: androidDeviceInfo.version.sdkInt.toString(),
-        deviceToken: fcmToken,
-        deviceName: androidDeviceInfo.model,
-        deviceImei: androidDeviceInfo.androidId);
+      systemVersion: androidDeviceInfo.version.release,
+      apiLevel: androidDeviceInfo.version.sdkInt.toString(),
+      deviceToken: fcmToken,
+      deviceName: androidDeviceInfo.model,
+    );
   } else if (Platform.isIOS) {
     IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
     return DeviceInfo(
@@ -43,7 +43,12 @@ Future<DeviceInfo?> getDeviceData() async {
 }
 
 class DeviceInfo {
-  DeviceInfo({this.apiLevel, this.deviceName, this.deviceToken, this.systemVersion, this.deviceImei});
+  DeviceInfo(
+      {this.apiLevel,
+      this.deviceName,
+      this.deviceToken,
+      this.systemVersion,
+      this.deviceImei});
 
   String? deviceName;
   String? deviceToken;

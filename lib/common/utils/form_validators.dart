@@ -8,19 +8,27 @@ typedef Validator = String? Function(dynamic param);
 
 class FormValidators {
   static String? phoneNumber(String? text) =>
-      RegExp('^9\\d{9}\$').hasMatch(text ?? '') ? null : LocaleKeys.validator_wrongPhoneNumber.tr();
+      RegExp('^9\\d{9}\$').hasMatch(text ?? '')
+          ? null
+          : LocaleKeys.validator_wrongPhoneNumber.tr();
 
   static String? phoneNumberWithZero(String? text) =>
-      RegExp('^09\\d{9}\$').hasMatch(text ?? '') ? null : LocaleKeys.validator_wrongPhoneNumber.tr();
+      RegExp('^09\\d{9}\$').hasMatch(text ?? '')
+          ? null
+          : LocaleKeys.validator_wrongPhoneNumber.tr();
 
   static String? phoneNumberAll(String? text) =>
-      RegExp('^\\d{0,1}9\\d{9}\$').hasMatch(text ?? '') ? null : LocaleKeys.validator_wrongPhoneNumber.tr();
+      RegExp('^\\d{0,1}9\\d{9}\$').hasMatch(text ?? '')
+          ? null
+          : LocaleKeys.validator_wrongPhoneNumber.tr();
 
   static String? onlyNumbers(String? text) =>
-      RegExp('^[0-9]*\$').hasMatch(text ?? '') ? null : LocaleKeys.validator_onlyNumbers.tr();
+      RegExp('^[0-9]*\$').hasMatch(text ?? '')
+          ? null
+          : LocaleKeys.validator_onlyNumbers.tr();
 
-  static Validator required(BuildContext context) => FormBuilderValidators.required(
-        context,
+  static Validator required(BuildContext context) =>
+      FormBuilderValidators.required(
         errorText: LocaleKeys.validator_requiredField.tr(),
       );
 
@@ -36,7 +44,9 @@ class FormValidators {
         control += values[i] * int.parse(temp[i]);
       }
     }
-    return (control % 11 == 0) ? null : LocaleKeys.validator_nationalNumberInvalid.tr();
+    return (control % 11 == 0)
+        ? null
+        : LocaleKeys.validator_nationalNumberInvalid.tr();
   }
 
   static FormFieldValidator maxPrice(
@@ -70,13 +80,16 @@ class FormValidators {
                   num.tryParse(valueCandidate) != null &&
                   num.tryParse(valueCandidate)! < min)) {
             return errorText ??
-                LocaleKeys.validator_priceCanNotBeLess.tr(args: <String>[min.toString().currencyFormatter()]);
+                LocaleKeys.validator_priceCanNotBeLess
+                    .tr(args: <String>[min.toString().currencyFormatter()]);
           }
         }
         return null;
       };
 
-  static FormFieldValidator<T> compose<T>(List<FormFieldValidator<T>> validators) => (valueCandidate) {
+  static FormFieldValidator<T> compose<T>(
+          List<FormFieldValidator<T>> validators) =>
+      (valueCandidate) {
         for (FormFieldValidator<T> validator in validators) {
           final String? validatorResult = validator.call(valueCandidate);
           if (validatorResult != null) {
