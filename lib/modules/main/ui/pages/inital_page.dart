@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:revolution1401/common/constants/fonts.dart';
 import 'package:revolution1401/common/localization/locale_keys.g.dart';
 import 'package:revolution1401/common/resources/resources.dart';
@@ -15,6 +14,7 @@ import 'package:revolution1401/common/uikit/switcher.dart';
 
 class InitialPage extends StatefulWidget {
   const InitialPage({super.key});
+
   @override
   State<InitialPage> createState() => _InitialPageState();
 }
@@ -22,7 +22,7 @@ class InitialPage extends StatefulWidget {
 class _InitialPageState extends State<InitialPage> {
   bool isTwoText = false;
   bool isFinalText = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,36 +49,42 @@ class _InitialPageState extends State<InitialPage> {
             Switcher(
               switcherAnimation: SwitcherAnimation.fade,
               duration: const Duration(seconds: 4),
-              child: isFinalText ? Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CinButton(
-                        borderRadius: BorderRadius.circular(28),
-                        type: ButtonType.secondary,
-                        color: context.colors.primary,
-                        height: 32,
-                        onPressed: () async {},
-                        child: Text(LocaleKeys.story_title.tr()),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          bottom: 8.0, left: 8.0, right: 8.0),
-                      child: CinButton(
-                        color: context.colors.black.withOpacity(0.2),
-                        type: ButtonType.secondary,
-                        borderRadius: BorderRadius.circular(28),
-                        height: 32,
-                        onPressed: () async {},
-                        child: Text(
-                          LocaleKeys.skip.tr(),
+              child: isFinalText
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CinButton(
+                            borderRadius: BorderRadius.circular(28),
+                            type: ButtonType.secondary,
+                            color: context.colors.primary,
+                            height: 32,
+                            onPressed: () async {
+                              print('test 1');
+                            },
+                            child: Text(LocaleKeys.story_title.tr()),
+                          ),
                         ),
-                      ),
-                    ),
-                  ],
-                ) : null,
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: 8.0, left: 8.0, right: 8.0),
+                          child: CinButton(
+                            color: context.colors.black.withOpacity(0.2),
+                            type: ButtonType.secondary,
+                            borderRadius: BorderRadius.circular(28),
+                            height: 32,
+                            onPressed: () async {
+                              print('test 2');
+                            },
+                            child: Text(
+                              LocaleKeys.skip.tr(),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : null,
             ),
           ],
         ),
@@ -92,6 +98,12 @@ class _InitialPageState extends State<InitialPage> {
         onFinished: () {
           setState(() {
             isTwoText = true;
+          });
+          Timer(const Duration(seconds: 6), () {
+            setState(() {
+              isTwoText = false;
+              isFinalText = true;
+            });
           });
         },
         isRepeatingAnimation: false,
@@ -110,21 +122,6 @@ class _InitialPageState extends State<InitialPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AnimatedTextKit(
-            onFinished: () {
-              setState(() {
-                isTwoText = false;
-                isFinalText = true;
-              });
-            },
-            isRepeatingAnimation: false,
-            animatedTexts: [
-              FadeAnimatedText(
-                '',
-                duration: const Duration(seconds: 6),
-              ),
-            ],
-          ),
           AnimatedOpacity(
             opacity: 1.0,
             duration: const Duration(seconds: 1),
