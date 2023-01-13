@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:revolution1401/common/constants/fonts.dart';
 import 'package:revolution1401/common/localization/locale_keys.g.dart';
 import 'package:revolution1401/common/resources/resources.dart';
+import 'package:revolution1401/common/router/app_router.dart';
 import 'package:revolution1401/common/styles/appTheme/app_theme.dart';
 import 'package:revolution1401/common/styles/appTheme/app_theme_helper.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
@@ -75,7 +77,7 @@ class _InitialPageState extends State<InitialPage> {
                             borderRadius: BorderRadius.circular(28),
                             height: 32,
                             onPressed: () async {
-                              print('test 2');
+                              context.go(R.main);
                             },
                             child: Text(
                               LocaleKeys.skip.tr(),

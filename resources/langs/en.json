@@ -7,6 +7,12 @@
   "freedom": "Freedom",
   "slogan": "With slogan",
   "skip": "Skip",
+  "search":{
+    "title": "Search"
+  },
+  "gallery":{
+    "title": "Gallery"
+  },
   "story": {
     "title": "Revolution Story"   
   },
@@ -143,6 +149,7 @@
     "title": "Categories"
   },
   "home": {
+    "title": "Home",
     "searchHint": "What are you looking for?"
   },
   "chooseCity": {

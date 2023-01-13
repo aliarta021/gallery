@@ -17,7 +17,15 @@
     "renaissance": {
       "title": "رنسانس"
     }
-    
+  },
+  "search":{
+    "title": "جستجو"
+  },
+  "gallery":{
+    "title": "گالری"
+  },
+  "home": {
+    "title": "خانه"
   },
   "story": {
     "title": "داستان انقلاب"   
@@ -55,6 +63,7 @@
       "submit": "ثبت",
       "cancel": "لغو"
     },
+    
     "comingSoon": "بزودی",
     "options": "گزینه ها",
     "nothingFound": "موردی یافت نشد",

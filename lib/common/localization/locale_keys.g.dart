@@ -10,6 +10,9 @@ abstract class LocaleKeys {
   static const life = 'life';
   static const freedom = 'freedom';
   static const skip = 'skip';
+  static const search_title = 'search.title';
+  static const gallery_title = 'gallery.title';
+  static const home_title = 'home.title';
   static const story_title = 'story.title';
   static const initial_slogan = 'initial.slogan';
   static const initial_revolution_title = 'initial.revolution.title';

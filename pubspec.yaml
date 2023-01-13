@@ -20,6 +20,8 @@ dependencies:
   after_layout: ^1.2.0
   # UI / Component
   bot_toast: ^4.0.3
+  fancy_bottom_navigation: ^0.3.3
+  flutter_svg: ^1.0.3
   pinput: ^2.2.21
   shimmer: ^2.0.0
   percent_indicator: ^4.2.2
