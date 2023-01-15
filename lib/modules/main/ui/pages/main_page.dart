@@ -12,21 +12,25 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin {
+class _MainPageState extends State<MainPage>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) => LayoutBuilder(
       builder: (context, constraints) => Scaffold(
             body: Consumer<MainPageBloc>(
-              builder: (BuildContext context, MainPageBloc bloc, Widget? child) => bloc.page,
+              builder:
+                  (BuildContext context, MainPageBloc bloc, Widget? child) =>
+                      bloc.page,
             ),
-            bottomNavigationBar:
-                Consumer<MainPageBloc>(builder: (BuildContext context, MainPageBloc bloc, Widget? child) {
+            bottomNavigationBar: Consumer<MainPageBloc>(builder:
+                (BuildContext context, MainPageBloc bloc, Widget? child) {
               Color unselectedColor = Theme.of(context).disabledColor;
               Color selectedColor = Theme.of(context).primaryColor;
               return Container(
                 decoration: BoxDecoration(
                   boxShadow: <BoxShadow>[
-                    BoxShadow(color: ColorPalette.of(context).shadow, blurRadius: 5),
+                    BoxShadow(
+                        color: ColorPalette.of(context).shadow, blurRadius: 5),
                   ],
                 ),
                 child: Stack(
@@ -37,15 +41,21 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                       onTap: (int index) {
                         bloc.changePage(context, index);
                       },
-                      selectedLabelStyle:
-                          Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w800),
-                      unselectedLabelStyle: Theme.of(context).textTheme.overline?.copyWith(fontSize: 10),
+                      selectedLabelStyle: Theme.of(context)
+                          .textTheme
+                          .bodyText2!
+                          .copyWith(fontWeight: FontWeight.w800),
+                      unselectedLabelStyle: Theme.of(context)
+                          .textTheme
+                          .overline
+                          ?.copyWith(fontSize: 10),
                       selectedItemColor: selectedColor,
                       unselectedItemColor: unselectedColor,
                       showUnselectedLabels: false,
                       type: BottomNavigationBarType.fixed,
                       elevation: 0,
-                      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor:
+                          Theme.of(context).scaffoldBackgroundColor,
                       items: List<BottomNavigationBarItem>.generate(
                           MainPages.values.length,
                           (index) => _navigationBarItem(
@@ -56,13 +66,15 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                     ),
                     AnimatedPositionedDirectional(
                         curve: Curves.easeInOut,
-                        start: bloc.pageIndex * (constraints.maxWidth / bloc.pagesCount),
+                        start: bloc.pageIndex *
+                            (constraints.maxWidth / bloc.pagesCount),
                         duration: const Duration(milliseconds: 230),
                         child: Container(
                           width: constraints.maxWidth / bloc.pagesCount,
                           height: 2,
                           decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(10)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
                             color: ColorPalette.of(context).primary,
                           ),
                         )),
@@ -73,7 +85,11 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
           ));
 
   BottomNavigationBarItem _navigationBarItem(
-          {required MainPageBloc bloc, required String title, required int index, String? asset, IconData? icon}) =>
+          {required MainPageBloc bloc,
+          required String title,
+          required int index,
+          String? asset,
+          IconData? icon}) =>
       BottomNavigationBarItem(
         label: title,
         icon: Padding(

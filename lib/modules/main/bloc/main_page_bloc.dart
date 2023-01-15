@@ -1,9 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:revolution1401/common/localization/locale_keys.g.dart';
 import 'package:revolution1401/common/uikit/coming_soon.dart';
-import 'package:revolution1401/modules/main/ui/pages/main_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum MainPages {
