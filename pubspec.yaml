@@ -59,8 +59,8 @@ dependencies:
   dio_cookie_manager: ^2.0.0
   cookie_jar: ^3.0.1
   # Firebase
-  # firebase_core: ^1.13.1
-  # firebase_messaging: ^11.2.11
+  firebase_core: ^1.13.1
+  firebase_messaging: ^11.2.11
   # Utils
   mobile_scanner: ^1.1.0
   share_plus: ^4.0.4
