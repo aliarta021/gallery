@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:revolution1401/common/uikit/search_widget.dart';
 import 'package:revolution1401/common/utils/status_bar.dart';
+import 'package:revolution1401/modules/home/bloc/home_bloc.dart';
+import 'package:revolution1401/modules/home/ui/widgets/slider/simple_banner_slider.dart';
 import 'package:revolution1401/modules/main/ui/widgets/header_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,7 +24,7 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                 ),
-                
+                SimpleBannerSlider(context.read<HomeBloc>().list),
               ],
             ),
           ),

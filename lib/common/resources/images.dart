@@ -7,4 +7,8 @@ class Images {
 
   static const String meydanAzadi = 'assets/images/meydan_azadi.jpg';
   static const String initialBackground = 'assets/images/initial.jpg';
+  static const String dena = 'assets/images/dena.jpg';
+  static const String hosna = 'assets/images/hosna.jpg';
+  static const String mahbobe = 'assets/images/mahbobe.jpg';
+  static const String hadise = 'assets/images/hadise.jpg';
 }

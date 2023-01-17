@@ -25,6 +25,7 @@ class App extends StatelessWidget {
             create: (BuildContext createContext) => AppRouter(),
           ),
           ChangeNotifierProvider(create: (BuildContext context) => MainPageBloc()),
+          ChangeNotifierProvider(create: (BuildContext context) => HomeBloc()),
         ],
         child: EasyLocalization(
           supportedLocales: AppConfig.supportedLocales,
