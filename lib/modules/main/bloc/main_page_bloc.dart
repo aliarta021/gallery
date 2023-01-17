@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:revolution1401/common/localization/locale_keys.g.dart';
 import 'package:revolution1401/common/uikit/coming_soon.dart';
+import 'package:revolution1401/modules/home/ui/pages/home_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum MainPages {
@@ -22,7 +23,7 @@ final List<Widget> pageWidgets = List<Widget>.from(MainPages.values.map((page) {
     case MainPages.search:
       return const Center(child: ComingSoon());
     case MainPages.home:
-      return const Center(child: ComingSoon());
+      return const Center(child: HomePage());
     case MainPages.gallery:
       return const Center(child: ComingSoon());
     // case MainPages.scanQr:

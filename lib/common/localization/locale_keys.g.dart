@@ -13,6 +13,7 @@ abstract class LocaleKeys {
   static const search_title = 'search.title';
   static const gallery_title = 'gallery.title';
   static const home_title = 'home.title';
+  static const home_searchHint = 'home.searchHint';
   static const story_title = 'story.title';
   static const initial_slogan = 'initial.slogan';
   static const initial_revolution_title = 'initial.revolution.title';
