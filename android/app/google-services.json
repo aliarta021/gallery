@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "12803684349",
+    "project_id": "revolution-1401",
+    "storage_bucket": "revolution-1401.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12803684349:android:04cef9a4e061144ae0cb94",
+        "android_client_info": {
+          "package_name": "com.example.revolution_1401"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12803684349-a65p31fkhmignkv05fl0n281dcodk0g9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC91G90-iI_eJqRGN45N9D4o1kqDt5CNgI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12803684349-a65p31fkhmignkv05fl0n281dcodk0g9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
