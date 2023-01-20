@@ -14,12 +14,13 @@ class SimpleBannerSlider extends StatelessWidget {
           CarouselSlider.builder(
             options: CarouselOptions(
               enableInfiniteScroll: true,
-              autoPlay: true /* ?? (slider.items?.length ?? 0) > 1 */,
-              // TODO(hossein): check this
+              autoPlay:
+                  slider.length > 1 /* ?? (slider.items?.length ?? 0) > 1 */,
               // scrollPhysics: (slider.items?.length ?? 0) > 1
               //     ? const BouncingScrollPhysics()
               //     : const NeverScrollableScrollPhysics(),
               autoPlayAnimationDuration: const Duration(milliseconds: 1200),
+              onPageChanged: (index, reason) => {},
               viewportFraction: 0.7,
               aspectRatio: 1.4286,
               enlargeCenterPage: true,
@@ -27,7 +28,7 @@ class SimpleBannerSlider extends StatelessWidget {
             itemCount: slider.length,
             itemBuilder: (BuildContext context, int index, int realIndex) =>
                 ImageBanner(
-              imagePath: slider[index].image?.mobile?.fa?.hashKey ?? '',
+              slider[index],
             ),
           ),
         ],

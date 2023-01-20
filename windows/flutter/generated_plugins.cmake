@@ -3,8 +3,10 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  connectivity_plus_windows
+  connectivity_plus
   sentry_flutter
+  share_plus
+  smart_auth
   url_launcher_windows
 )
 
