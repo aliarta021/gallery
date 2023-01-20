@@ -27,9 +27,7 @@ class SimpleBannerSlider extends StatelessWidget {
             ),
             itemCount: slider.length,
             itemBuilder: (BuildContext context, int index, int realIndex) =>
-                ImageBanner(
-              slider[index],
-            ),
+                ImageBanner(slider[index]),
           ),
         ],
       );
