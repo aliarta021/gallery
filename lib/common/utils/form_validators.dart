@@ -19,9 +19,9 @@ class FormValidators {
   static String? onlyNumbers(String? text) =>
       RegExp('^[0-9]*\$').hasMatch(text ?? '') ? null : LocaleKeys.validator_onlyNumbers.tr();
 
-  // static Validator required(BuildContext context) => FormBuilderValidators.required(
-  //       errorText: LocaleKeys.validator_requiredField.tr(),
-  //     );
+  static Validator required(BuildContext context) => FormBuilderValidators.required(
+        errorText: LocaleKeys.validator_requiredField.tr(),
+      );
 
   static String? nationalNumberValidator(String? text) {
     String code = text ?? '';
