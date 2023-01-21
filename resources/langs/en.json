@@ -11,7 +11,8 @@
     "title": "Search"
   },
   "gallery":{
-    "title": "Gallery"
+    "title": "Gallery",
+    "discover": "Discover"
   },
   "story": {
     "title": "Revolution Story"   
