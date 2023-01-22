@@ -49,7 +49,7 @@ class SearchBarAnimation extends StatefulWidget {
     this.searchBoxWidth,
     this.hintText,
     this.searchBoxColour = Colors.white,
-    this.buttonColour = Colors.white,
+    this.buttonColour = Colors.transparent,
     this.cursorColour = Colors.black,
     this.hintTextColour = Colors.grey,
     this.searchBoxBorderColour = Colors.black12,
@@ -90,7 +90,7 @@ class _SearchBarAnimationState extends State<SearchBarAnimation>
 
   final DecorationTween decorationTween = DecorationTween(
     begin: BoxDecoration(
-      color: Colors.red,
+      // color: Color,
       borderRadius: BorderRadius.circular(60),
     ),
     end: BoxDecoration(
@@ -178,7 +178,7 @@ class _SearchBarAnimationState extends State<SearchBarAnimation>
                   opacity: (!switcher) ? 0 : 1,
                   duration: const Duration(milliseconds: 700),
                   child: Container(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -203,7 +203,7 @@ class _SearchBarAnimationState extends State<SearchBarAnimation>
                     alignment: Alignment.topCenter,
                     width: (widget.searchBoxWidth ??
                             MediaQuery.of(context).size.width) /
-                        1.7,
+                        2,
                     child: _textFormField(),
                   ),
                 ),
@@ -227,7 +227,9 @@ class _SearchBarAnimationState extends State<SearchBarAnimation>
                                 decorationTween.animate(_animationController),
                             child: GestureDetector(
                               child: CircleAvatar(
-                                backgroundColor: widget.buttonColour,
+                                backgroundColor: switcher
+                                    ? Colors.white
+                                    : widget.buttonColour,
                                 child: switcher
                                     ? widget.secondaryButtonWidget
                                     : widget.buttonWidget,
@@ -378,7 +380,6 @@ class _SearchBarAnimationState extends State<SearchBarAnimation>
       },
       style: widget.enteredTextStyle ?? context.textTheme.bodyText1,
       cursorColor: widget.cursorColour,
-      // textAlign: widget.textAlignToRight ? TextAlign.right : TextAlign.left,
       decoration: InputDecoration(
         fillColor: Colors.transparent,
         contentPadding: const EdgeInsets.only(left: 4, top: 12, right: 45),

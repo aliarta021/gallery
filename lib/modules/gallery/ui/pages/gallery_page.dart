@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:revolution1401/common/localization/locale_keys.g.dart';
 import 'package:revolution1401/common/styles/appTheme/app_theme_helper.dart';
+import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/common/utils/status_bar.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/gallery_header_widget.dart';
 
@@ -17,6 +18,7 @@ class GalleryPage extends StatelessWidget {
   Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
         value: StatusBar.page(context),
         child: Scaffold(
+          backgroundColor: context.colors.background,
           body: SafeArea(
             child: CustomScrollView(
               slivers: [
@@ -36,4 +38,3 @@ class GalleryPage extends StatelessWidget {
         ),
       );
 }
-

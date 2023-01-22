@@ -129,7 +129,11 @@ class ColorPalette {
 }
 
 class ColorMode extends Color {
-  ColorMode({required this.main, required this.light, required this.dark, required this.background})
+  ColorMode(
+      {required this.main,
+      required this.light,
+      required this.dark,
+      required this.background})
       : super.fromARGB(main.alpha, main.red, main.green, main.blue);
 
   final Color main;
