@@ -2,9 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:revolution1401/common/localization/locale_keys.g.dart';
 import 'package:revolution1401/common/styles/appTheme/app_theme_helper.dart';
-import 'package:revolution1401/common/uikit/form/cin_textfield.dart';
-import 'package:revolution1401/common/uikit/switcher.dart';
-import 'package:searchbar_animation/searchbar_animation.dart';
+import 'package:revolution1401/modules/gallery/ui/widgets/search_bar_widget.dart';
 
 class GalletyHeaderWidget extends StatefulWidget {
   const GalletyHeaderWidget({
@@ -25,19 +23,24 @@ class _GalletyHeaderWidgetState extends State<GalletyHeaderWidget> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Text(
-                //   LocaleKeys.gallery_discover.tr(),
-                //   style: context.textTheme.headline6,
-                // ),
-                SearchBarAnimation(
-                    searchBoxWidth: 250,
-                    textEditingController: TextEditingController(),
-                    isOriginalAnimation: true,
-                    trailingWidget: Icon(Icons.close),
-                    secondaryButtonWidget: Icon(Icons.close),
-                    buttonWidget: Icon(Icons.search)),
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    LocaleKeys.gallery_discover.tr(),
+                    style: context.textTheme.headline6?.copyWith(),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: SearchBarAnimation(
+                      searchBoxWidth: 250,
+                      textEditingController: TextEditingController(),
+                      isOriginalAnimation: true,
+                      trailingWidget: const Icon(Icons.search),
+                      secondaryButtonWidget: const Icon(Icons.close),
+                      buttonWidget: const Icon(Icons.search)),
+                ),
               ],
             ),
           ),

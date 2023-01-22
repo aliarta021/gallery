@@ -44,7 +44,6 @@ dependencies:
   dough: ^1.0.3
   flutter_staggered_animations: ^1.1.1
   flutter_animator: ^3.2.2
-  searchbar_animation: ^0.0.4
   # Form
   flutter_form_builder: ^7.7.0
   form_builder_validators: ^8.4.0
