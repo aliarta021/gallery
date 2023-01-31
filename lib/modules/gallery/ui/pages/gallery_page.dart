@@ -5,10 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:image_size_getter/file_input.dart';
 import 'package:image_size_getter/image_size_getter.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/common/utils/status_bar.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
+import 'package:revolution1401/modules/gallery/ui/pages/image_view_page.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/gallery_header_widget.dart';
 
 class GalleryPage extends StatelessWidget {
@@ -49,17 +51,18 @@ class GalleryPage extends StatelessWidget {
                             controller: scrollController,
                             itemCount: bloc.imageList.length,
                             itemBuilder: (context, index) {
-                              return SizedBox(
-                                height: ImageSizeGetter.getSize(
-                                          FileInput(
-                                            File(bloc.imageList[index]),
-                                          ),
-                                        ).height >
-                                        ImageSizeGetter.getSize(FileInput(
-                                                File(bloc.imageList[index])))
-                                            .width
-                                    ? MediaQuery.of(context).size.height / 4
-                                    : MediaQuery.of(context).size.height / 6,
+                              return InkWell(
+                                onTap: () {
+                                  print(index);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ImageViewPage(
+                                        image: bloc.imageList[index],
+                                      ),
+                                    ),
+                                  );
+                                },
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(12),
                                   child: Image.asset(
