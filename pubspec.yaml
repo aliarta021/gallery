@@ -43,7 +43,7 @@ dependencies:
   photo_view: ^0.14.0
   # Animations
   animated_text_kit: ^4.2.2
-  dough: ^1.0.3
+  # dough: ^1.0.3
   flutter_staggered_animations: ^1.1.1
   flutter_animator: ^3.2.2
   # Form

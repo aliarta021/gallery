@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:revolution1401/common/constants/fonts.dart';
+import 'package:revolution1401/common/resources/resources.dart';
 
 extension LocaleHelper on Locale {
   String get languageName {
@@ -29,11 +30,13 @@ extension LocaleUtils on BuildContext {
 
   bool get isLtr => !isRtl;
 
-  ui.TextDirection get localeDirection => isRtl ? ui.TextDirection.rtl : ui.TextDirection.ltr;
+  ui.TextDirection get localeDirection =>
+      isRtl ? ui.TextDirection.rtl : ui.TextDirection.ltr;
 
-  ui.TextDirection get invertLocaleDirection => isRtl ? ui.TextDirection.ltr : ui.TextDirection.rtl;
+  ui.TextDirection get invertLocaleDirection =>
+      isRtl ? ui.TextDirection.ltr : ui.TextDirection.rtl;
 
   String get localeNumericFont => isFa ? Fonts.yekanBakhFaNum : Fonts.yekanBakh;
 
-  // String get localeLogoType => isFa || isAr ? Svgs.logoTypeFa : Svgs.logoTypeEn;
+  String get localeLogoType => isFa || isAr ? Svgs.logoTypeFa : Svgs.logoTypeEn;
 }

@@ -1,4 +1,4 @@
-import 'package:dough/dough.dart';
+// import 'package:dough/dough.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animator/flutter_animator.dart';
@@ -33,21 +33,21 @@ class SplashPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                ZoomIn(
-                  child: DoughRecipe(
-                    data: DoughRecipeData(
-                      entryDuration: const Duration(milliseconds: 200),
-                      adhesion: 2,
-                      viscosity: 15000,
-                      usePerspectiveWarp: true,
-                      exitDuration: const Duration(milliseconds: 1100),
-                    ),
-                    child: PressableDough(
-                      // todo: logo app
-                      child: Container(),
-                    ),
-                  ),
-                ),
+                // ZoomIn(
+                //   child: DoughRecipe(
+                //     data: DoughRecipeData(
+                //       entryDuration: const Duration(milliseconds: 200),
+                //       adhesion: 2,
+                //       viscosity: 15000,
+                //       usePerspectiveWarp: true,
+                //       exitDuration: const Duration(milliseconds: 1100),
+                //     ),
+                //     child: PressableDough(
+                //       // todo: logo app
+                //       child: Container(),
+                //     ),
+                //   ),
+                // ),
                 AnimatedCondition(
                   child != null,
                   duration: const Duration(milliseconds: 450),

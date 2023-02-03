@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:revolution1401/common/uikit/search_widget.dart';
 import 'package:revolution1401/common/utils/status_bar.dart';
+import 'package:revolution1401/modules/gallery/ui/widgets/multipleBanner/multiple_banner_slider.dart';
 import 'package:revolution1401/modules/home/bloc/home_bloc.dart';
 import 'package:revolution1401/modules/home/ui/widgets/slider/simple_banner_slider.dart';
 import 'package:revolution1401/modules/main/ui/widgets/header_widget.dart';
@@ -30,8 +31,13 @@ class HomePage extends StatelessWidget {
                     <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(top: 40, bottom: 30),
-                        child: SimpleBannerSlider(context.read<HomeBloc>().list),
-                      )
+                        child:
+                            SimpleBannerSlider(context.read<HomeBloc>().list),
+                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(top: 40, bottom: 30),
+                      //   child: MultipleBannerSlider(context.read<HomeBloc>().list),
+                      // ),
                     ],
                   ),
                 ),
