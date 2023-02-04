@@ -27,11 +27,14 @@ class GalleryPage extends StatelessWidget {
                   DraggableScrollableSheet(
                     initialChildSize: 0.78,
                     minChildSize: 0.78,
+                    // snap: true,
+                    expand: true,
                     snap: true,
+                    snapAnimationDuration: const Duration(microseconds: 500),
                     builder: (BuildContext context,
                         ScrollController scrollController) {
                       return Container(
-                        margin: const EdgeInsets.only(top: 12),
+                        // margin: const EdgeInsets.only(top: 12),
                         decoration: BoxDecoration(
                           color: context.colors.white,
                           borderRadius: const BorderRadius.only(
@@ -39,8 +42,7 @@ class GalleryPage extends StatelessWidget {
                             topRight: Radius.circular(18),
                           ),
                         ),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 10),
+                        // padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Consumer<GalleryBloc>(
                             builder: (context, bloc, child) {
                           return GridView.builder(
@@ -74,6 +76,8 @@ class GalleryPage extends StatelessWidget {
                                 ),
                               );
                             },
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 8),
                             gridDelegate: SliverQuiltedGridDelegate(
                               crossAxisCount: 4,
                               mainAxisSpacing: 4,

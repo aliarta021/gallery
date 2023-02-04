@@ -23,14 +23,15 @@ class _GalletyHeaderWidgetState extends State<GalletyHeaderWidget> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
+          padding: const EdgeInsets.only(top: 28.0, left: 8, right: 8),
           child: Row(
             children: [
               Expanded(
                 flex: 1,
                 child: Text(
                   LocaleKeys.gallery_discover.tr(),
-                  style: context.textTheme.bodyLarge?.copyWith(fontSize: 20),
+                  style:
+                      context.textTheme.headlineMedium?.copyWith(fontSize: 22),
                 ),
               ),
               Expanded(
