@@ -8,7 +8,10 @@ import 'package:revolution1401/common/utils/status_bar.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
 import 'package:revolution1401/modules/gallery/ui/pages/image_view_page.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/gallery_header_widget.dart';
+import 'package:revolution1401/modules/gallery/ui/widgets/image_index_widget.dart';
+import 'package:revolution1401/modules/gallery/ui/widgets/video_index_widget.dart';
 import 'package:revolution1401/modules/home/bloc/home_bloc.dart';
+import 'package:path/path.dart' as p;
 
 class GalleryPage extends StatelessWidget {
   const GalleryPage({super.key});
@@ -50,31 +53,13 @@ class GalleryPage extends StatelessWidget {
                             controller: scrollController,
                             itemCount: bloc.imageList.length,
                             itemBuilder: (context, index) {
-                              return InkWell(
-                                onLongPress: () {
-                                  print(index);
-                                },
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ImageViewPage(
-                                        image: bloc.imageList[index],
-                                        controller: CarouselController(),
-                                        items: bloc.imageList,
-                                        selectedImage: index,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12),
-                                  child: Image.asset(
-                                    bloc.imageList[index],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              );
+                              return p.extension(bloc.imageList[index]) ==
+                                      '.jpg'
+                                  ? ImageIndexWidget(
+                                      index: index,
+                                      bloc: bloc,
+                                    )
+                                  : VideoIndexWidget(bloc: bloc, index: index);
                             },
                             padding: const EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 8),

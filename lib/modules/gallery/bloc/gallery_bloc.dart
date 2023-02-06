@@ -9,16 +9,6 @@ class GalleryBloc extends ChangeNotifier {
     Images.hosna,
     Images.mahbobe,
     Images.meydanAzadi,
-    Images.mahbobe,
-    Images.meydanAzadi,
-    Images.mahbobe,
-    Images.meydanAzadi,
-    Images.dena,
-    Images.initialBackground,
-    Images.hadise,
-    Images.hosna,
-    Images.mahbobe,
-    Images.meydanAzadi,
-    Images.mahbobe,
+    Videos.ghalamfarsa1,
   ];
 }

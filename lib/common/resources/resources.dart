@@ -7,3 +7,5 @@ part 'svgs.dart';
 part 'emojis.dart';
 
 part 'launcher_icons.dart';
+
+part 'videos.dart';

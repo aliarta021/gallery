@@ -74,7 +74,7 @@ class _GalletyHeaderWidgetState extends State<GalletyHeaderWidget> {
                 ],
               ),
             ),
-            itemCount: 8,
+            itemCount: context.read<GalleryBloc>().imageList.length,
           ),
         ),
       ],
