@@ -1,5 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,8 @@ class App extends StatelessWidget {
             lazy: false,
             create: (BuildContext createContext) => AppRouter(),
           ),
-          ChangeNotifierProvider(create: (BuildContext context) => MainPageBloc()),
+          ChangeNotifierProvider(
+              create: (BuildContext context) => MainPageBloc()),
           ChangeNotifierProvider(create: (BuildContext context) => HomeBloc()),
         ],
         child: EasyLocalization(
@@ -78,10 +80,7 @@ class App extends StatelessWidget {
                     BotToastInit()(
                         context,
                         FutureBuilder(
-                          future: Future.wait([
-                            // Future.delayed(const Duration(seconds: 2)),
-                            // Provider.of<HomeBloc>(context, listen: false).load()
-                          ]),
+                          future: Firebase.initializeApp(),
                           builder: (context, snapshot) => snapshot.hasData
                               ? (child ?? const SizedBox.shrink())
                               : SplashPage(
