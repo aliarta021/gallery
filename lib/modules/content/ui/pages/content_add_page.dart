@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -21,6 +23,19 @@ class ContentAddPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              if (context
+                  .select<ContentAddBloc, bool>((bloc) => bloc.file != null))
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.file(
+                      File(context.read<ContentAddBloc>().file!.path!),
+                      width: 250,
+                      height: 250,
+                    ),
+                  ),
+                ),
               const CinTextField(
                 name: 'title',
                 hint: 'عنوان',
@@ -38,11 +53,7 @@ class ContentAddPage extends StatelessWidget {
               CinButton(
                 text: 'انتخاب فایل',
                 onPressed: () async {
-                  ImagePicker? imagePicker = ImagePicker();
-                  XFile? result =
-                      await imagePicker.pickImage(source: ImageSource.gallery);
-                  // ignore: use_build_context_synchronously
-                  await context.read<ContentAddBloc>().selectFile(result);
+                  await context.read<ContentAddBloc>().selectFile();
                 },
               ),
               const SizedBox(
@@ -50,7 +61,15 @@ class ContentAddPage extends StatelessWidget {
               ),
               CinButton(
                 text: 'ارسال',
-                onPressed: () async {},
+                onPressed: () async {
+                  if (context.select<ContentAddBloc, bool>(
+                      (bloc) => bloc.file != null)) {
+                    // ignore: use_build_context_synchronously
+                    await context
+                        .read<ContentAddBloc>()
+                        .uploadFile(context.read<ContentAddBloc>().file);
+                  }
+                },
               ),
             ],
           ),

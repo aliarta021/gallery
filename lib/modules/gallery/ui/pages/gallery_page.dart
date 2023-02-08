@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -6,11 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/common/utils/status_bar.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
-import 'package:revolution1401/modules/gallery/ui/pages/image_view_page.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/gallery_header_widget.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/image_index_widget.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/video_index_widget.dart';
-import 'package:revolution1401/modules/home/bloc/home_bloc.dart';
 import 'package:path/path.dart' as p;
 
 class GalleryPage extends StatelessWidget {

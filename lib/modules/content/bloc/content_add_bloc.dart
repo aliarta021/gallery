@@ -10,13 +10,21 @@ class ContentAddBloc extends ChangeNotifier {
   final storageRef = FirebaseStorage.instance.ref();
   String? urlImage;
 
-  Future<void> selectFile(XFile? file) async {
+  PlatformFile? file;
+
+  Future<void> selectFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    file = result?.files.first;
+    notifyListeners();
+  }
+
+  Future<void> uploadFile(PlatformFile? file) async {
     Reference? imagesRef = storageRef.child("gallery");
     if (file != null) {
       try {
         String uniqueName = DateTime.now().millisecondsSinceEpoch.toString();
         final refrenceDirImage = imagesRef.child(uniqueName);
-        await refrenceDirImage.putFile(File(file.path));
+        await refrenceDirImage.putFile(File(file.path ?? ''));
         urlImage = await refrenceDirImage.getDownloadURL();
         print(urlImage);
         notifyListeners();
