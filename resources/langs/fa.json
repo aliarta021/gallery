@@ -21,6 +21,13 @@
   "search":{
     "title": "جستجو"
   },
+  "group": {
+    "art": "هنری",
+    "deceased": "زنده یاد",
+    "prison":  "دستگیرشده‌ها",
+    "videos": "ویدیوها",
+    "images": "عکس‌ها"
+  },
   "gallery":{
     "title": "گالری",
     "discover": "دسته‌بندی"

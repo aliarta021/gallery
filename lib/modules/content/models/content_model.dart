@@ -20,7 +20,7 @@ class ContentModel {
   String? description;
   @JsonKey(name: 'image_url')
   String? imageUrl;
-  int? grouping;
+  List<int>? grouping;
   @JsonKey(name: 'death_date')
   int? deathDate;
   @JsonKey(name: 'arrest_date')

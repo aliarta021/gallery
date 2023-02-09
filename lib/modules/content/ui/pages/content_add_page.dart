@@ -48,18 +48,20 @@ class ContentAddPage extends StatelessWidget {
                   ),
                 ),
               CinTextField(
-                name: 'title',
+                name: _title,
                 hint: 'عنوان',
-                controller: context.select<ContentAddBloc, TextEditingController?>((bloc) => bloc.titleController),
               ),
               const SizedBox(
                 height: 8,
               ),
               CinTextField(
-                name: 'description',
+                name: _description,
                 hint: 'توضیحات',
-                controller: context.select<ContentAddBloc, TextEditingController?>((bloc) => bloc.descriptonController),
               ),
+              const SizedBox(
+                height: 8,
+              ),
+              
               const SizedBox(
                 height: 8,
               ),

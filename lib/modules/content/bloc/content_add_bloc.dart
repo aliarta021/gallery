@@ -4,9 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:revolution1401/common/utils/logging/log_helper.dart';
 import 'package:revolution1401/modules/content/models/content_model.dart';
+
 
 class ContentAddBloc extends ChangeNotifier {
   final storageRef = FirebaseStorage.instance.ref();
@@ -15,8 +15,11 @@ class ContentAddBloc extends ChangeNotifier {
       FirebaseFirestore.instance.collection('gallery_images');
 
   String? urlImage;
+
   TextEditingController? _titleController;
+  
   TextEditingController? get titleController => _titleController;
+  
   set titleController(TextEditingController? value) {
     _titleController = value;
     notifyListeners();
@@ -39,7 +42,7 @@ class ContentAddBloc extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> uploadFile(PlatformFile? file) async {
+  Future<void> uploadFile(PlatformFile? file, String? title,String? description,int? arrestDate,int? deathDate,int? freedomDate, int? grouping) async {
     Reference? imagesRef = storageRef.child("gallery");
     if (file != null) {
       try {
@@ -52,6 +55,10 @@ class ContentAddBloc extends ChangeNotifier {
             titleController != null) {
           ContentModel model = ContentModel(
             imageUrl: urlImage,
+            arrestDate: arrestDate,
+            deathDate: deathDate,
+            freedomDate: freedomDate,
+            grouping: ,
             title: titleController?.text,
             description: descriptonController?.text,
           );
