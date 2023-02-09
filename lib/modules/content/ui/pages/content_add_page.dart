@@ -81,7 +81,7 @@ class ContentAddPage extends StatelessWidget {
                     // ignore: use_build_context_synchronously
                     await context
                         .read<ContentAddBloc>()
-                        .uploadFile(context.read<ContentAddBloc>().file);
+                        .uploadFile(file: context.read<ContentAddBloc>().file);
                   }
                 },
               ),

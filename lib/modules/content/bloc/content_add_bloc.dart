@@ -42,7 +42,7 @@ class ContentAddBloc extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> uploadFile(PlatformFile? file, String? title,String? description,int? arrestDate,int? deathDate,int? freedomDate, int? grouping) async {
+  Future<void> uploadFile({PlatformFile? file, String? title,String? description,int? arrestDate,int? deathDate,int? freedomDate, List<int>? grouping}) async {
     Reference? imagesRef = storageRef.child("gallery");
     if (file != null) {
       try {
