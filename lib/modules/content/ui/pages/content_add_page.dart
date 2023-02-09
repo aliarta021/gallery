@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:revolution1401/common/uikit/button/cin_button.dart';
@@ -12,7 +13,17 @@ import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.d
 import 'package:revolution1401/modules/content/bloc/content_add_bloc.dart';
 
 class ContentAddPage extends StatelessWidget {
-  const ContentAddPage({super.key});
+   ContentAddPage({super.key});
+
+  final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
+
+  String get _title => 'title';
+
+  String get _description => 'description';
+
+  String get _commentTitle => 'commentTitle';
+
+  String get _commentContent => 'commentContent';
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +47,18 @@ class ContentAddPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              const CinTextField(
+              CinTextField(
                 name: 'title',
                 hint: 'عنوان',
+                controller: context.select<ContentAddBloc, TextEditingController?>((bloc) => bloc.titleController),
               ),
               const SizedBox(
                 height: 8,
               ),
-              const CinTextField(
+              CinTextField(
                 name: 'description',
                 hint: 'توضیحات',
+                controller: context.select<ContentAddBloc, TextEditingController?>((bloc) => bloc.descriptonController),
               ),
               const SizedBox(
                 height: 8,
@@ -62,8 +75,7 @@ class ContentAddPage extends StatelessWidget {
               CinButton(
                 text: 'ارسال',
                 onPressed: () async {
-                  if (context.select<ContentAddBloc, bool>(
-                      (bloc) => bloc.file != null)) {
+                  if (context.read<ContentAddBloc>().file != null) {
                     // ignore: use_build_context_synchronously
                     await context
                         .read<ContentAddBloc>()
