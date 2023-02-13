@@ -10,7 +10,7 @@ ContentModel _$ContentModelFromJson(Map<String, dynamic> json) => ContentModel(
       title: json['title'] as String?,
       description: json['description'] as String?,
       imageUrl: json['image_url'] as String?,
-      grouping: json['grouping'] as int?,
+      grouping: json['grouping'] as List<int>?,
       deathDate: json['death_date'] as int?,
       arrestDate: json['arrest_date'] as int?,
       freedomDate: json['freedom_date'] as int?,

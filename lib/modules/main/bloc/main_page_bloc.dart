@@ -23,7 +23,7 @@ enum MainPages {
 final List<Widget> pageWidgets = List<Widget>.from(MainPages.values.map((page) {
   switch (page) {
     case MainPages.search:
-      return const Center(child: ContentAddPage());
+      return Center(child: ContentAddPage());
     case MainPages.home:
       return const Center(child: HomePage());
     case MainPages.gallery:
