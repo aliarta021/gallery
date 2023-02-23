@@ -1,12 +1,16 @@
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:revolution1401/common/router/app_router.dart';
+import 'package:revolution1401/common/styles/appTheme/app_theme_helper.dart';
+import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/common/uikit/button/cin_button.dart';
 import 'package:revolution1401/common/uikit/form/cin_checkbox.dart';
 import 'package:revolution1401/common/uikit/form/cin_date_picker.dart';
-import 'package:revolution1401/common/uikit/form/cin_radio_group.dart';
 import 'package:revolution1401/common/uikit/form/cin_textfield.dart';
 import 'package:revolution1401/modules/content/bloc/content_add_bloc.dart';
 import 'package:revolution1401/modules/content/enums/group_type.dart';
@@ -37,19 +41,38 @@ class ContentAddPage extends StatelessWidget {
                   const SizedBox(
                     height: 18,
                   ),
-                  if (context.select<ContentAddBloc, bool>(
-                      (bloc) => bloc.file != null))
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.file(
-                          File(context.read<ContentAddBloc>().file!.path!),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  (context.select<ContentAddBloc, bool>(
+                          (bloc) => bloc.file != null))
+                      ? Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.file(
+                              File(context.read<ContentAddBloc>().file!.path!),
+                              width: 250,
+                              height: 250,
+                            ),
+                          ),
+                        )
+                      : Container(
                           width: 250,
                           height: 250,
+                          margin: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: context.colors.divider,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Icon(
+                            Icons.image,
+                            size: 24,
+                          ),
                         ),
-                      ),
-                    ),
                   CinTextField(
                     name: _title,
                     hint: 'عنوان',
@@ -118,19 +141,25 @@ class ContentAddPage extends StatelessWidget {
                           // ignore: use_build_context_synchronously
                           await context.read<ContentAddBloc>().uploadFile(
                                 file: context.read<ContentAddBloc>().file,
-                                arrestDate:
-                                    _formKey.currentState?.value[_arrestDate],
-                                deathDate: _formKey.currentState?.value[_deathDate],
+                                arrestDate: (_formKey.currentState
+                                        ?.value[_arrestDate] as DateTime?)
+                                    ?.millisecondsSinceEpoch,
+                                deathDate: (_formKey.currentState
+                                        ?.value[_deathDate] as DateTime?)
+                                    ?.millisecondsSinceEpoch,
                                 description:
                                     _formKey.currentState?.value[_description],
-                                freedomDate:
-                                    _formKey.currentState?.value[_freedomDate],
+                                freedomDate: (_formKey.currentState
+                                        ?.value[_freedomDate] as DateTime?)
+                                    ?.millisecondsSinceEpoch,
                                 title: _formKey.currentState?.value[_title],
                               );
+                          context.go(R.galleryPage);
                         }
                       }
                     },
                   ),
+                  buildProgress(context),
                 ],
               ),
             ),
@@ -139,4 +168,39 @@ class ContentAddPage extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildProgress(BuildContext context) => StreamBuilder<TaskSnapshot>(
+        stream: context.read<ContentAddBloc>().uploadTask?.snapshotEvents,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final data = snapshot.data!;
+            double progress = data.bytesTransferred / data.totalBytes;
+            return SizedBox(
+              height: 50,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  LinearProgressIndicator(
+                    value: progress,
+                    backgroundColor: context.colors.disabled,
+                    color: context.colors.success,
+                  ),
+                  Center(
+                    child: Text(
+                      '${(100 * progress).roundToDouble()}%',
+                      style: context.textTheme.bodyMedium?.copyWith(
+                        color: context.colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          } else {
+            return const SizedBox(
+              height: 50,
+            );
+          }
+        },
+      );
 }

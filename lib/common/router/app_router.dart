@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:revolution1401/modules/gallery/ui/pages/gallery_page.dart';
 import 'package:revolution1401/modules/main/bloc/main_page_bloc.dart';
 import 'package:revolution1401/modules/main/ui/pages/inital_page.dart';
 import 'package:revolution1401/modules/main/ui/pages/main_page.dart';
@@ -13,6 +14,8 @@ class R {
   static const String home = '/home';
 
   static const String initialPage = '/initial-page';
+
+  static const String galleryPage = '/gallery-page';
 }
 
 class AppRouter {
@@ -21,7 +24,7 @@ class AppRouter {
       if ((await context.read<MainPageBloc>().checkSeenFirstPage())) {
         return R.initialPage;
       } else {
-        return R.main;
+        return null;
       }
     },
     debugLogDiagnostics: true,
@@ -34,6 +37,7 @@ class AppRouter {
     routes: <GoRoute>[
       _route(path: R.main, pageBuilder: (state) => const MainPage()),
       _route(path: R.initialPage, pageBuilder: (state) => const InitialPage()),
+      _route(path: R.galleryPage, pageBuilder: (state) => const GalleryPage()),
     ],
   );
 

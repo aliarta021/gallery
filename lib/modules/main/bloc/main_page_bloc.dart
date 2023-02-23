@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:revolution1401/common/localization/locale_keys.g.dart';
-import 'package:revolution1401/common/uikit/coming_soon.dart';
 import 'package:revolution1401/modules/content/ui/pages/content_add_page.dart';
 import 'package:revolution1401/modules/gallery/ui/pages/gallery_page.dart';
 import 'package:revolution1401/modules/home/ui/pages/home_page.dart';
@@ -38,7 +37,8 @@ final List<Widget> pageWidgets = List<Widget>.from(MainPages.values.map((page) {
 class MainPageBloc extends ChangeNotifier {
   Future checkSeenFirstPage() async {
     final prefs = await SharedPreferences.getInstance();
-    bool seenPage = prefs.getBool('seen') ?? false;
+    bool seenPage = prefs.getBool('seen') ?? true;
+    print(prefs.get('seen'));
     return seenPage;
   }
 
@@ -62,6 +62,7 @@ class MainPageBloc extends ChangeNotifier {
     //   }
     // } else {
     _pageIndex = index;
+
     // }
     notifyListeners();
   }
