@@ -12,6 +12,7 @@ import 'package:revolution1401/common/styles/appTheme/app_theme.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette.dart';
 import 'package:revolution1401/common/uikit/clickable/push_down_clickable.dart';
 import 'package:revolution1401/common/utils/app_scroll_behavior.dart';
+import 'package:revolution1401/modules/database/bloc/database_bloc.dart';
 import 'package:revolution1401/modules/home/bloc/home_bloc.dart';
 import 'package:revolution1401/modules/main/bloc/main_page_bloc.dart';
 import 'package:revolution1401/modules/main/ui/pages/splash_page.dart';
@@ -26,6 +27,8 @@ class App extends StatelessWidget {
             lazy: false,
             create: (BuildContext createContext) => AppRouter(),
           ),
+          ChangeNotifierProvider(
+              create: (BuildContext context) => DatabaseBloc()),
           ChangeNotifierProvider(
               create: (BuildContext context) => MainPageBloc()),
           ChangeNotifierProvider(create: (BuildContext context) => HomeBloc()),

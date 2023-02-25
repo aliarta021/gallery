@@ -7,6 +7,8 @@ import 'package:revolution1401/common/utils/logging/log_helper.dart';
 import 'package:revolution1401/common/utils/toast.dart';
 import 'package:revolution1401/modules/content/enums/group_type.dart';
 import 'package:revolution1401/modules/content/models/content_model.dart';
+import 'package:revolution1401/modules/database/bloc/database_bloc.dart';
+
 
 class ContentAddBloc extends ChangeNotifier {
   final storageRef = FirebaseStorage.instance.ref();
@@ -18,8 +20,7 @@ class ContentAddBloc extends ChangeNotifier {
   }
 
   // ignore: prefer_final_fields
-  CollectionReference _refrence =
-      FirebaseFirestore.instance.collection('gallery_images');
+  
 
   List<int> _groupSelectedList = [];
 
@@ -127,7 +128,7 @@ class ContentAddBloc extends ChangeNotifier {
           description: description,
         );
         //todo: check it
-        _refrence.add(model.toJson());
+        DatabaseBloc().refrence.add(model.toJson());
         return true;
       }
       return true;
@@ -136,4 +137,11 @@ class ContentAddBloc extends ChangeNotifier {
       return false;
     }
   }
+
+  // Future<void> load() async {
+  //   Database snapshot = await refrence.;
+  //   snapshot.wtfLog();
+  //   print(snapshot.metadata.);
+  //   // print(_refrence.get().then((DataSnap) => null));
+  // }
 }
