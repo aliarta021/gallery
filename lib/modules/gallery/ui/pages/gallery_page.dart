@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
+import 'package:revolution1401/common/uikit/loading_widget.dart';
 import 'package:revolution1401/common/utils/status_bar.dart';
 import 'package:revolution1401/modules/content/bloc/content_add_bloc.dart';
 import 'package:revolution1401/modules/database/bloc/database_bloc.dart';
@@ -34,7 +35,6 @@ class GalleryPage extends StatelessWidget {
                         return DraggableScrollableSheet(
                           initialChildSize: 0.78,
                           minChildSize: 0.78,
-                          // snap: true,
                           expand: true,
                           snap: true,
                           snapAnimationDuration:
@@ -53,39 +53,45 @@ class GalleryPage extends StatelessWidget {
                               // padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Consumer<GalleryBloc>(
                                   builder: (context, bloc, child) {
-                                return GridView.builder(
-                                  shrinkWrap: true,
-                                  controller: scrollController,
-                                  itemCount: snapshot.data?.docs.length,
-                                  itemBuilder: (context, index) {
-                                    return Image.network(snapshot
-                                        .data?.docs[index]['image_url']);
-                                    return p.extension(bloc.imageList[index]) ==
-                                            '.jpg'
-                                        ? ImageIndexWidget(
-                                            index: index,
-                                            bloc: bloc,
-                                          )
-                                        : VideoIndexWidget(
-                                            bloc: bloc, index: index);
-                                  },
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 12, horizontal: 8),
-                                  gridDelegate: SliverQuiltedGridDelegate(
-                                    crossAxisCount: 4,
-                                    mainAxisSpacing: 4,
-                                    crossAxisSpacing: 4,
-                                    repeatPattern:
-                                        QuiltedGridRepeatPattern.inverted,
-                                    pattern: const [
-                                      QuiltedGridTile(2, 2),
-                                      QuiltedGridTile(1, 1),
-                                      QuiltedGridTile(1, 1),
-                                      QuiltedGridTile(1, 1),
-                                      QuiltedGridTile(1, 1),
-                                    ],
-                                  ),
-                                );
+                                return !snapshot.hasData
+                                    ? const Center(
+                                        child: LoadingWidget(
+                                          size: 35,
+                                        ),
+                                      )
+                                    : GridView.builder(
+                                        shrinkWrap: true,
+                                        controller: scrollController,
+                                        itemCount: snapshot.data?.docs.length,
+                                        itemBuilder: (context, index) {
+                                          p.extension(snapshot.data?.docs[index]
+                                                      ['image_url']) ==
+                                                  '.jpg'
+                                              ? ImageIndexWidget(
+                                                  index: index,
+                                                  bloc: bloc,
+                                                  snapshot: snapshot,
+                                                )
+                                              : VideoIndexWidget(
+                                                  bloc: bloc, index: index);
+                                        },
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 12, horizontal: 8),
+                                        gridDelegate: SliverQuiltedGridDelegate(
+                                          crossAxisCount: 4,
+                                          mainAxisSpacing: 4,
+                                          crossAxisSpacing: 4,
+                                          repeatPattern:
+                                              QuiltedGridRepeatPattern.inverted,
+                                          pattern: const [
+                                            QuiltedGridTile(2, 2),
+                                            QuiltedGridTile(1, 1),
+                                            QuiltedGridTile(1, 1),
+                                            QuiltedGridTile(1, 1),
+                                            QuiltedGridTile(1, 1),
+                                          ],
+                                        ),
+                                      );
                               }),
                             );
                           },

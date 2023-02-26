@@ -17,10 +17,7 @@ class ContentAddBloc extends ChangeNotifier {
   set uploadTask(UploadTask? value) {
     _uploadTask = value;
     notifyListeners();
-  }
-
-  // ignore: prefer_final_fields
-  
+  }  
 
   List<int> _groupSelectedList = [];
 
