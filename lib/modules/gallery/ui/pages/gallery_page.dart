@@ -62,21 +62,26 @@ class GalleryPage extends StatelessWidget {
                                     : GridView.builder(
                                         shrinkWrap: true,
                                         controller: scrollController,
-                                        itemCount: snapshot.data?.docs.length,
+                                        itemCount:
+                                            (snapshot.data?.docs.length ?? 0),
                                         itemBuilder: (context, index) {
-                                          p.extension(snapshot.data?.docs[index]
-                                                      ['image_url']) ==
-                                                  '.jpg'
+                                          return context
+                                                  .read<GalleryBloc>()
+                                                  .checkImage(snapshot, index)
                                               ? ImageIndexWidget(
                                                   index: index,
                                                   bloc: bloc,
                                                   snapshot: snapshot,
                                                 )
                                               : VideoIndexWidget(
-                                                  bloc: bloc, index: index);
+                                                  bloc: bloc,
+                                                  index: index,
+                                                );
                                         },
                                         padding: const EdgeInsets.symmetric(
-                                            vertical: 12, horizontal: 8),
+                                          vertical: 12,
+                                          horizontal: 8,
+                                        ),
                                         gridDelegate: SliverQuiltedGridDelegate(
                                           crossAxisCount: 4,
                                           mainAxisSpacing: 4,

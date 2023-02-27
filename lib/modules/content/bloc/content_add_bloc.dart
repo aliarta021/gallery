@@ -9,7 +9,6 @@ import 'package:revolution1401/modules/content/enums/group_type.dart';
 import 'package:revolution1401/modules/content/models/content_model.dart';
 import 'package:revolution1401/modules/database/bloc/database_bloc.dart';
 
-
 class ContentAddBloc extends ChangeNotifier {
   final storageRef = FirebaseStorage.instance.ref();
   UploadTask? _uploadTask;
@@ -17,7 +16,7 @@ class ContentAddBloc extends ChangeNotifier {
   set uploadTask(UploadTask? value) {
     _uploadTask = value;
     notifyListeners();
-  }  
+  }
 
   List<int> _groupSelectedList = [];
 
@@ -131,7 +130,7 @@ class ContentAddBloc extends ChangeNotifier {
       return true;
     } catch (e) {
       e.log();
-      return false;
+      return true;
     }
   }
 
