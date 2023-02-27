@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
@@ -36,8 +37,8 @@ class ImageIndexWidget extends StatelessWidget {
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        child: Image.network(
-          snapshot.data?.docs[index]['image_url'],
+        child: CachedNetworkImage(
+          imageUrl: snapshot.data?.docs[index]['image_url'],
           fit: BoxFit.cover,
         ),
       ),

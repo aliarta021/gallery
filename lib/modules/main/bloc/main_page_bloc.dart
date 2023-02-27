@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 enum MainPages {
   // scanQr(LocaleKeys.scanQr_title, Icons.qr_code_scanner_rounded),
-  // categories(LocaleKeys.categories_title, Icons.category_rounded),
+  // categories(LocaleKeys.categories_title, Icons.category_roupnded),
   search(LocaleKeys.search_title, Icons.search_off_rounded),
   home(LocaleKeys.home_title, Icons.home_rounded),
   gallery(LocaleKeys.gallery_title, Icons.album_rounded);
