@@ -15,7 +15,11 @@ class GalleryBloc extends ChangeNotifier {
   ];
 
   bool checkImage(AsyncSnapshot<QuerySnapshot> snapshot, int index) {
-    List<int> group =  snapshot.data?.docs[index]['grouping'];
-    return (group.asMap().containsKey(GroupType.images.intGroupType()));
+    List group = snapshot.data?.docs[index]['grouping'];
+    List<int> converted = [];
+    group.forEach((element) {
+      converted.add(element ?? 0);
+    });
+    return (group.contains(GroupType.images.intGroupType()));
   }
 }

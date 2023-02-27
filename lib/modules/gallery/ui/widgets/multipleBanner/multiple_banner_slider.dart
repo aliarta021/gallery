@@ -6,7 +6,6 @@ import 'package:glass_kit/glass_kit.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette.dart';
 import 'package:revolution1401/common/uikit/switcher.dart';
 import 'package:revolution1401/common/uikit/text/title_widget.dart';
-import 'package:revolution1401/modules/gallery/ui/widgets/multipleBanner/multiple_banner_switcher.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/multipleBanner/multiple_banner_tile.dart';
 import 'package:revolution1401/modules/home/models/banner_model.dart';
 
@@ -84,7 +83,7 @@ class _MultipleBannerSliderState extends State<MultipleBannerSlider> {
                           }
                         },
                       ),
-                      itemCount: widget.slider.length ?? 0,
+                      itemCount: widget.slider.length,
                       itemBuilder: (BuildContext context, int index, int i) => ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: MultipleBannerTile(

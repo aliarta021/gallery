@@ -6,13 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/common/uikit/loading_widget.dart';
 import 'package:revolution1401/common/utils/status_bar.dart';
-import 'package:revolution1401/modules/content/bloc/content_add_bloc.dart';
 import 'package:revolution1401/modules/database/bloc/database_bloc.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/gallery_header_widget.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/image_index_widget.dart';
 import 'package:revolution1401/modules/gallery/ui/widgets/video_index_widget.dart';
-import 'package:path/path.dart' as p;
 
 class GalleryPage extends StatelessWidget {
   const GalleryPage({super.key});
@@ -35,8 +33,8 @@ class GalleryPage extends StatelessWidget {
                         return DraggableScrollableSheet(
                           initialChildSize: 0.78,
                           minChildSize: 0.78,
+                          maxChildSize: 0.96,
                           expand: true,
-                          snap: true,
                           snapAnimationDuration:
                               const Duration(microseconds: 500),
                           builder: (BuildContext context,

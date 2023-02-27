@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
 import 'package:revolution1401/modules/gallery/ui/pages/image_view_page.dart';
 
@@ -40,8 +41,13 @@ class ImageIndexWidget extends StatelessWidget {
         child: CachedNetworkImage(
           imageUrl: snapshot.data?.docs[index]['image_url'],
           fit: BoxFit.cover,
-          progressIndicatorBuilder: (context, url, downloadProgress) =>
-              CircularProgressIndicator(value: downloadProgress.progress),
+          progressIndicatorBuilder: (context, url, downloadProgress) => Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: CircularProgressIndicator(
+              value: downloadProgress.progress,
+              color: context.colors.primary,
+            ),
+          ),
           errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       ),
