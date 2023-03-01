@@ -1,9 +1,11 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:revolution1401/modules/gallery/ui/pages/gallery_page.dart';
+import 'package:revolution1401/modules/gallery/ui/pages/image_description_view.dart';
 import 'package:revolution1401/modules/main/bloc/main_page_bloc.dart';
 import 'package:revolution1401/modules/main/ui/pages/inital_page.dart';
 import 'package:revolution1401/modules/main/ui/pages/main_page.dart';
@@ -16,6 +18,8 @@ class R {
   static const String initialPage = '/initial-page';
 
   static const String galleryPage = '/gallery-page';
+
+  static const String imageDescriptionView = '/image-description-view';
 }
 
 class AppRouter {
@@ -38,6 +42,11 @@ class AppRouter {
       _route(path: R.main, pageBuilder: (state) => const MainPage()),
       _route(path: R.initialPage, pageBuilder: (state) => const InitialPage()),
       _route(path: R.galleryPage, pageBuilder: (state) => const GalleryPage()),
+      _route(
+          path: R.imageDescriptionView,
+          pageBuilder: (state) => ImageDescrptionView(
+              snapshot: state.extra as AsyncSnapshot<QuerySnapshot>,
+              index: state.extra as int))
     ],
   );
 

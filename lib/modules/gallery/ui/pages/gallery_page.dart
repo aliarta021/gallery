@@ -33,7 +33,7 @@ class GalleryPage extends StatelessWidget {
                         return DraggableScrollableSheet(
                           initialChildSize: 0.78,
                           minChildSize: 0.78,
-                          maxChildSize: 0.96,
+                          maxChildSize: 0.97,
                           expand: true,
                           snapAnimationDuration:
                               const Duration(microseconds: 500),

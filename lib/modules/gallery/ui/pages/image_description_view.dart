@@ -4,9 +4,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 
 class ImageDescrptionView extends StatelessWidget {
-  const ImageDescrptionView({super.key,required this.snapshot});
+  const ImageDescrptionView(
+      {super.key, required this.snapshot, required this.index});
 
   final AsyncSnapshot<QuerySnapshot> snapshot;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class ImageDescrptionView extends StatelessWidget {
                   ),
                 ),
                 // padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Text('child'),
+                child: Text(snapshot.data?.docs[index]['image_url']),
               );
             },
           ),
