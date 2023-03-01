@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:revolution1401/common/router/app_router.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
+import 'package:revolution1401/modules/gallery/ui/pages/image_description_view.dart';
 import 'package:revolution1401/modules/gallery/ui/pages/image_view_page.dart';
 
 class ImageIndexWidget extends StatelessWidget {
@@ -26,18 +27,20 @@ class ImageIndexWidget extends StatelessWidget {
         print(index);
       },
       onTap: () {
-        context.go(R.imageDescriptionView,extra: snapshot,);
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => ImageViewPage(
-        //       image: bloc.imageList[index],
-        //       controller: PageController(),
-        //       items: bloc.imageList,
-        //       selectedImage: index,
-        //     ),
-        //   ),
-        // );
+        // context.go(R.imageDescriptionView,extra: snapshot,);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ImageDescrptionView(
+              index: index,
+              snapshot: snapshot,
+              // image: bloc.imageList[index],
+              // controller: PageController(),
+              // items: bloc.imageList,
+              // selectedImage: index,
+            ),
+          ),
+        );
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),

@@ -66,9 +66,41 @@ class ContentAddBloc extends ChangeNotifier {
         String uniqueName = DateTime.now().millisecondsSinceEpoch.toString();
         final refrenceDirImage = imagesRef.child(uniqueName);
         uploadTask = refrenceDirImage.putFile(File(file.path ?? ''));
-        final snapshot =
-            await uploadTask?.whenComplete(() => {print('upload complete')});
-        urlImage = await snapshot?.ref.getDownloadURL();
+        //todo :: check this
+        uploadTask?.snapshotEvents.listen((TaskSnapshot snapshot) {
+          print('Task state: ${snapshot.state}');
+          print(
+              'Progress: ${(snapshot.bytesTransferred / snapshot.totalBytes) * 100} %');
+          switch (snapshot.state) {
+            case TaskState.paused:
+              break;
+            case TaskState.running:
+              CircularProgressIndicator(
+                  value:
+                      (snapshot.bytesTransferred > 0 && snapshot.totalBytes > 0)
+                          ? snapshot.bytesTransferred / snapshot.totalBytes
+                          : null);
+
+              // showPercent(snapshot, title, description, freedomDate, deathDate,
+              //     arrestDate);
+              break;
+            case TaskState.success:
+              print('success');
+              break;
+            case TaskState.canceled:
+              break;
+            case TaskState.error:
+              snapshot.errLog();
+              break;
+          }
+        }, onError: (e) {
+          // The final snapshot is also available on the status via `.snapshot`,
+          // this can include 2 additional states, `TaskState.error` & `TaskState.canceled`
+          print(uploadTask?.snapshot);
+        });
+
+        // await uploadTask?.whenComplete(() => {print('upload complete')});
+        urlImage = await uploadTask?.snapshot.ref.getDownloadURL();
         await addToDatabase(
           arrestDate: arrestDate,
           deathDate: deathDate,
@@ -88,6 +120,32 @@ class ContentAddBloc extends ChangeNotifier {
       // final name = refrenceDirImage.name;
       // imagesRef = refrenceDirImage.parent;
     }
+  }
+
+  Future<void> showPercent(
+    TaskSnapshot snapshot,
+    String? title,
+    String? description,
+    int? arrestDate,
+    int? deathDate,
+    int? freedomDate,
+  ) async {
+    CircularProgressIndicator(
+        value: (snapshot.bytesTransferred > 0 && snapshot.totalBytes > 0)
+            ? snapshot.bytesTransferred / snapshot.totalBytes
+            : null);
+    urlImage = await snapshot.ref.getDownloadURL();
+    await addToDatabase(
+      arrestDate: arrestDate,
+      deathDate: deathDate,
+      description: description,
+      freedomDate: freedomDate,
+      title: title,
+    )
+        ? Toast.show('آپلود با موفقیت انجام شد.')
+        : Toast.show('آپلود موفقیت آمیز نبود لطفا دوباره تلاش کنید.');
+    uploadTask = null;
+    clearData(title, description, arrestDate, deathDate, freedomDate);
   }
 
   void clearData(
