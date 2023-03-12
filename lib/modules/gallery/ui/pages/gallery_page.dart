@@ -66,14 +66,14 @@ class GalleryPage extends StatelessWidget {
                                           return context
                                                   .read<GalleryBloc>()
                                                   .checkImage(snapshot, index)
-                                              ? ImageIndexWidget(
+                                              ? ImageViewWidget(
                                                   index: index,
                                                   bloc: bloc,
                                                   snapshot: snapshot,
                                                 )
-                                              : VideoIndexWidget(
-                                                  bloc: bloc,
-                                                  index: index,
+                                              : VideoPlayerWidget(
+                                                  videoPath:
+                                                      bloc.imageList[index],
                                                 );
                                         },
                                         padding: const EdgeInsets.symmetric(

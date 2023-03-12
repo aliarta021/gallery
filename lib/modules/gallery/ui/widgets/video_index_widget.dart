@@ -3,29 +3,29 @@ import 'package:revolution1401/common/resources/resources.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
 import 'package:video_player/video_player.dart';
 
-class VideoIndexWidget extends StatefulWidget {
-  const VideoIndexWidget({
+class VideoPlayerWidget extends StatefulWidget {
+  const VideoPlayerWidget({
     super.key,
-    required this.bloc,
-    required this.index,
+    required this.videoPath,
   });
-  final int index;
-  final GalleryBloc bloc;
+  final String videoPath;
 
   @override
-  State<VideoIndexWidget> createState() => _VideoIndexWidgetState();
+  State<VideoPlayerWidget> createState() => _VideoPlayerWidgetState();
 }
 
-class _VideoIndexWidgetState extends State<VideoIndexWidget> {
+class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
   @override
   void initState() {
+    print(widget.videoPath);
     _controller = VideoPlayerController.asset(
-      widget.bloc.imageList[widget.index],
+      widget.videoPath,
     );
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.play();
+    _controller.setVolume(0);
     super.initState();
   }
 
@@ -38,9 +38,7 @@ class _VideoIndexWidgetState extends State<VideoIndexWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onLongPress: () {
-        print(widget.index);
-      },
+      onLongPress: () {},
       onTap: () {
         //  Navigator.push(
         //    context,

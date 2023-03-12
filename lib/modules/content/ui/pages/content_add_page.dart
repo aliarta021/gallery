@@ -14,6 +14,7 @@ import 'package:revolution1401/common/uikit/form/cin_date_picker.dart';
 import 'package:revolution1401/common/uikit/form/cin_textfield.dart';
 import 'package:revolution1401/modules/content/bloc/content_add_bloc.dart';
 import 'package:revolution1401/modules/content/enums/group_type.dart';
+import 'package:revolution1401/modules/gallery/ui/widgets/video_index_widget.dart';
 
 class ContentAddPage extends StatelessWidget {
   ContentAddPage({super.key});
@@ -46,32 +47,23 @@ class ContentAddPage extends StatelessWidget {
                   ),
                   (context.select<ContentAddBloc, bool>(
                           (bloc) => bloc.file != null))
-                      ? Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.file(
+                      ? (context.select<ContentAddBloc, bool>(
+                          (bloc) => bloc.isImage()))
+                          ? Image.file(
                               File(context.read<ContentAddBloc>().file!.path!),
                               width: 250,
                               height: 250,
-                            ),
-                          ),
-                        )
-                      : Container(
-                          width: 250,
-                          height: 250,
-                          margin: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: context.colors.divider,
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: const Icon(
-                            Icons.image,
-                            size: 24,
-                          ),
+                            )
+                          : Container(
+                              height: 250,
+                              child: VideoPlayerWidget(
+                                  videoPath: context
+                                      .read<ContentAddBloc>()
+                                      .file!
+                                      .path!),
+                            )
+                      : const SizedBox(
+                          height: 10,
                         ),
                   CinTextField(
                     name: _title,
@@ -181,7 +173,9 @@ class ContentAddPage extends StatelessWidget {
                 fit: StackFit.expand,
                 children: [
                   LinearProgressIndicator(
-                    value: progress,
+                    value: context.select<ContentAddBloc, double?>(
+                      (bloc) => bloc.progress,
+                    ),
                     backgroundColor: context.colors.disabled,
                     color: context.colors.success,
                   ),

@@ -70,6 +70,7 @@ dependencies:
   image_size_getter: ^2.1.2
   file_picker: ^5.2.5
   image_picker: ^0.8.6+1
+  mime: ^1.0.4
   # mobile_scanner: ^2.1.0
   share_plus: ^6.3.0
   flutter_html: ^3.0.0-alpha.5

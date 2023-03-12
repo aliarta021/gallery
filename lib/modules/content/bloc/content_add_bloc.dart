@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:mime/mime.dart';
 import 'package:revolution1401/common/utils/logging/log_helper.dart';
 import 'package:revolution1401/common/utils/toast.dart';
 import 'package:revolution1401/modules/content/enums/group_type.dart';
@@ -11,10 +12,20 @@ import 'package:revolution1401/modules/database/bloc/database_bloc.dart';
 
 class ContentAddBloc extends ChangeNotifier {
   final storageRef = FirebaseStorage.instance.ref();
+
   UploadTask? _uploadTask;
   UploadTask? get uploadTask => _uploadTask;
   set uploadTask(UploadTask? value) {
     _uploadTask = value;
+    notifyListeners();
+  }
+
+  double? _progress;
+
+  double? get progress => _progress;
+
+  set progress(double? value) {
+    _progress = value;
     notifyListeners();
   }
 
@@ -46,10 +57,31 @@ class ContentAddBloc extends ChangeNotifier {
 
   PlatformFile? file;
 
+  bool isImage() {
+    final String? mimeType = lookupMimeType(file!.path!);
+    return mimeType?.startsWith('image/') ?? false;
+  }
+
+  bool isVideo() {
+    final String? mimType = lookupMimeType(file!.path!);
+    return mimType?.startsWith('video/') ?? false;
+  }
+
   Future<void> selectFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     file = result?.files.first;
+    if (file?.path != null) {
+      print(lookupMimeType(file!.path!));
+    }
     notifyListeners();
+  }
+
+  static createNewVideo(String videoName, String rawVideoPath) async {
+    await FirebaseFirestore.instance.collection('videos').doc(videoName).set({
+      'finishedProcessing': false,
+      'videoName': videoName,
+      'rawVideoPath': rawVideoPath,
+    });
   }
 
   Future<void> uploadFile({
@@ -73,14 +105,18 @@ class ContentAddBloc extends ChangeNotifier {
               'Progress: ${(snapshot.bytesTransferred / snapshot.totalBytes) * 100} %');
           switch (snapshot.state) {
             case TaskState.paused:
+              print('paused');
               break;
             case TaskState.running:
-              CircularProgressIndicator(
-                  value:
-                      (snapshot.bytesTransferred > 0 && snapshot.totalBytes > 0)
-                          ? snapshot.bytesTransferred / snapshot.totalBytes
-                          : null);
-
+              progress =
+                  (snapshot.bytesTransferred > 0 && snapshot.totalBytes > 0)
+                      ? snapshot.bytesTransferred / snapshot.totalBytes
+                      : 0;
+              // CircularProgressIndicator(
+              //     value:
+              //         (snapshot.bytesTransferred > 0 && snapshot.totalBytes > 0)
+              //             ? snapshot.bytesTransferred / snapshot.totalBytes
+              //             : null);
               // showPercent(snapshot, title, description, freedomDate, deathDate,
               //     arrestDate);
               break;

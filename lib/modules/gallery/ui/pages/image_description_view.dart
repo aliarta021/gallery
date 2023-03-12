@@ -17,7 +17,7 @@ class ImageDescrptionView extends StatelessWidget {
         children: [
           CachedNetworkImage(
             fadeInCurve: Curves.bounceInOut,
-            fadeInDuration: Duration(seconds: 3),
+            fadeInDuration: const Duration(seconds: 3),
             imageUrl: snapshot.data?.docs[index]['image_url'],
             fit: BoxFit.cover,
             progressIndicatorBuilder: (context, url, downloadProgress) =>

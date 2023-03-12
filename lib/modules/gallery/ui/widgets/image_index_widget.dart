@@ -8,8 +8,8 @@ import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
 import 'package:revolution1401/modules/gallery/ui/pages/image_description_view.dart';
 import 'package:revolution1401/modules/gallery/ui/pages/image_view_page.dart';
 
-class ImageIndexWidget extends StatelessWidget {
-  const ImageIndexWidget({
+class ImageViewWidget extends StatelessWidget {
+  const ImageViewWidget({
     super.key,
     required this.index,
     required this.bloc,
