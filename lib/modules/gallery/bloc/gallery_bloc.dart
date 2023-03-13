@@ -14,12 +14,30 @@ class GalleryBloc extends ChangeNotifier {
     Videos.ghalamfarsa1,
   ];
 
+  List? _grouping;
+
+  List? get grouping => _grouping;
+
+  set grouping(List? value) {
+    _grouping = value;
+    notifyListeners();
+  }
+
   bool checkImage(AsyncSnapshot<QuerySnapshot> snapshot, int index) {
-    List group = snapshot.data?.docs[index]['grouping'];
+    grouping = snapshot.data?.docs[index]['grouping'];
     List<int> converted = [];
-    group.forEach((element) {
+    grouping?.forEach((element) {
       converted.add(element ?? 0);
     });
-    return (group.contains(GroupType.images.intGroupType()));
+    if (grouping != null) {
+      return (grouping!.contains(GroupType.images.intGroupType()));
+    } else {
+      return false;
+    }
+  }
+
+  Future<void> setGroupingList(
+      AsyncSnapshot<QuerySnapshot> snapshot, int index) async {
+    grouping = snapshot.data?.docs[index]['grouping'];
   }
 }
