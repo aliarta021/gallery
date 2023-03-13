@@ -8,6 +8,11 @@ abstract class LocaleKeys {
   static const revolution = 'revolution';
   static const women = 'women';
   static const life = 'life';
+  static const title = 'title';
+  static const description = 'description';
+  static const date_freedom = 'date.freedom';
+  static const date_assert = 'date.assert';
+  static const date_death = 'date.death';
   static const group_art = 'group.art';
   static const group_images = 'group.images';
   static const group_deceased = 'group.deceased';

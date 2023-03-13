@@ -6,6 +6,13 @@
   "skip": "گذر کردن",
   "life": "زندگی",
   "freedom": "آزادی",
+  "title": "عنوان",
+  "description": "توضیحات",
+  "date": {
+    "assert": "تاریخ بازداشت",
+    "freedom": "تاریخ آزادی",
+    "death": "تاریخ قتل"
+  },
   "initial": {
     "slogan": "با شعار",
     "revolution": {

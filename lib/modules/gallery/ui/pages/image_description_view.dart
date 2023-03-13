@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:revolution1401/common/localization/locale_keys.g.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 
 class ImageDescrptionView extends StatelessWidget {
@@ -49,7 +50,15 @@ class ImageDescrptionView extends StatelessWidget {
                 ),
                 child: SingleChildScrollView(
                   controller: scrollController,
-                  child: Text('data'),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(LocaleKeys.title)
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

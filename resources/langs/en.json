@@ -7,6 +7,13 @@
   "freedom": "Freedom",
   "slogan": "With slogan",
   "skip": "Skip",
+  "title": "Title",
+  "description": "Description",
+  "date": {
+    "assert": "Assert Date",
+    "freedom": "Freedom Date",
+    "death": "Death Date"
+  },
   "search":{
     "title": "Search"
   },

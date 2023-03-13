@@ -47,21 +47,7 @@ class ContentAddPage extends StatelessWidget {
                   ),
                   (context.select<ContentAddBloc, bool>(
                           (bloc) => bloc.file != null))
-                      ? (context.select<ContentAddBloc, bool>(
-                          (bloc) => bloc.isImage()))
-                          ? Image.file(
-                              File(context.read<ContentAddBloc>().file!.path!),
-                              width: 250,
-                              height: 250,
-                            )
-                          : Container(
-                              height: 250,
-                              child: VideoPlayerWidget(
-                                  videoPath: context
-                                      .read<ContentAddBloc>()
-                                      .file!
-                                      .path!),
-                            )
+                      ? const FilePlayer()
                       : const SizedBox(
                           height: 10,
                         ),
@@ -197,4 +183,29 @@ class ContentAddPage extends StatelessWidget {
           }
         },
       );
+}
+
+class FilePlayer extends StatelessWidget {
+  const FilePlayer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (context.select<ContentAddBloc, bool>((bloc) => bloc.isImage())) {
+      return Image.file(
+        File(context.read<ContentAddBloc>().file!.path!),
+        width: 250,
+        height: 250,
+      );
+    } else if (context.select<ContentAddBloc, bool>((bloc) => bloc.isVideo())) {
+      return SizedBox(
+        height: 250,
+        child: VideoPlayerWidget(
+            videoPath: context.read<ContentAddBloc>().file!.path!),
+      );
+    } else {
+      return Container();
+    }
+  }
 }
