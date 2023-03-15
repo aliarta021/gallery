@@ -2,14 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:revolution1401/common/constants/fonts.dart';
 import 'package:revolution1401/common/localization/locale_keys.g.dart';
+import 'package:revolution1401/common/router/app_router.dart';
 import 'package:revolution1401/common/styles/appTheme/app_theme_helper.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/common/utils/datetime_helper.dart';
 import 'package:revolution1401/modules/content/enums/group_type.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
+import 'package:revolution1401/modules/main/bloc/main_page_bloc.dart';
 
 class ImageDescrptionView extends StatelessWidget {
   const ImageDescrptionView(
@@ -59,7 +62,6 @@ class ImageDescrptionView extends StatelessWidget {
                           color: context.colors.shadow.withOpacity(0.1)),
                       child: IconButton(
                         onPressed: () {
-                          print(true);
                         },
                         icon: const Icon(Icons.favorite_outline),
                         iconSize: 22,

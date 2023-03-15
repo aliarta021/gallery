@@ -38,7 +38,6 @@ class MainPageBloc extends ChangeNotifier {
   Future checkSeenFirstPage() async {
     final prefs = await SharedPreferences.getInstance();
     bool seenPage = prefs.getBool('seen') ?? true;
-    print(prefs.get('seen'));
     return seenPage;
   }
 

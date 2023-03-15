@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:revolution1401/common/constants/app_config.dart';
@@ -19,7 +20,8 @@ import 'package:revolution1401/modules/main/ui/pages/splash_page.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
-
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) => MultiProvider(
         providers: [
@@ -71,45 +73,52 @@ class App extends StatelessWidget {
                 }
               },
             ),
-            child: Builder(
-              builder: (BuildContext context) => MaterialApp.router(
-                title: AppConfig.name,
-                theme: AppTheme.light,
-                scrollBehavior: const AppScrollBehavior(),
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                locale: context.locale,
-                builder: (BuildContext context, Widget? child) =>
-                    BotToastInit()(
-                        context,
-                        FutureBuilder(
-                          future: Firebase.initializeApp(),
-                          builder: (context, snapshot) => snapshot.hasData
-                              ? (child ?? const SizedBox.shrink())
-                              : SplashPage(
-                                  child: snapshot.hasError
-                                      ? PushDownClickable(
-                                          onTap: () {
-                                            Phoenix.rebirth(context);
-                                          },
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(25),
-                                            child: Icon(
-                                              Icons.refresh_rounded,
-                                              color: ColorPalette
-                                                  .light.textCaption,
-                                            ),
-                                          ),
-                                        )
-                                      : null,
-                                ),
-                        )),
-                routeInformationParser:
-                    context.read<AppRouter>().router.routeInformationParser,
-                routerDelegate: context.read<AppRouter>().router.routerDelegate,
-                debugShowCheckedModeBanner: false,
-              ),
-            ),
+            child: Builder(builder: (BuildContext context) {
+              final GoRouter router = context.read<AppRouter>().router;
+              return Builder(
+                  builder: (BuildContext ctx) => MaterialApp.router(
+                        title: AppConfig.name,
+                        theme: AppTheme.light,
+                        useInheritedMediaQuery: true,
+                        scrollBehavior: const AppScrollBehavior(),
+                        localizationsDelegates: context.localizationDelegates,
+                        locale: context.locale,
+                        routeInformationParser: router.routeInformationParser,
+                        routerDelegate: router.routerDelegate,
+                        debugShowCheckedModeBanner: false,
+                        routeInformationProvider:
+                            router.routeInformationProvider,
+                        supportedLocales: context.supportedLocales,
+                        builder: (BuildContext context, Widget? child) =>
+                            BotToastInit()(
+                                context,
+                                FutureBuilder(
+                                  future: Firebase.initializeApp(),
+                                  builder: (context, snapshot) => snapshot
+                                          .hasData
+                                      ? (child ?? const SizedBox.shrink())
+                                      : SplashPage(
+                                          child: snapshot.hasError
+                                              ? PushDownClickable(
+                                                  onTap: () {
+                                                    Phoenix.rebirth(context);
+                                                  },
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            25),
+                                                    child: Icon(
+                                                      Icons.refresh_rounded,
+                                                      color: ColorPalette
+                                                          .light.textCaption,
+                                                    ),
+                                                  ),
+                                                )
+                                              : null,
+                                        ),
+                                )),
+                      ));
+            }),
           ),
         ),
       );

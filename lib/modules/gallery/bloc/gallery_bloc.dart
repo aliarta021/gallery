@@ -14,14 +14,7 @@ class GalleryBloc extends ChangeNotifier {
     Videos.ghalamfarsa1,
   ];
 
-  List? _grouping;
-
-  List? get grouping => _grouping;
-
-  set grouping(List? value) {
-    _grouping = value;
-    notifyListeners();
-  }
+  List? grouping;
 
   bool checkImage(AsyncSnapshot<QuerySnapshot> snapshot, int index) {
     setGroupingList(snapshot, index);

@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:revolution1401/app.dart';
+import 'package:revolution1401/common/router/ui/err_page.dart';
 import 'package:revolution1401/modules/gallery/ui/pages/gallery_page.dart';
 import 'package:revolution1401/modules/gallery/ui/pages/image_description_view.dart';
 import 'package:revolution1401/modules/main/bloc/main_page_bloc.dart';
@@ -31,12 +33,13 @@ class AppRouter {
         return null;
       }
     },
+    navigatorKey: App.navigatorKey,
     debugLogDiagnostics: true,
     observers: <NavigatorObserver>[BotToastNavigatorObserver()],
     errorPageBuilder: (context, state) => MaterialPage<void>(
       key: state.pageKey,
       restorationId: state.pageKey.value,
-      child: Container(),
+      child: const ErrPage(),
     ),
     routes: <GoRoute>[
       _route(path: R.main, pageBuilder: (state) => const MainPage()),
