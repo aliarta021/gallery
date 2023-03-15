@@ -9,6 +9,8 @@ abstract class LocaleKeys {
   static const women = 'women';
   static const life = 'life';
   static const title = 'title';
+  static const name = 'name';
+  static const designed = 'designed';
   static const description = 'description';
   static const date_freedom = 'date.freedom';
   static const date_assert = 'date.assert';

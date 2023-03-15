@@ -24,7 +24,7 @@ class GalleryBloc extends ChangeNotifier {
   }
 
   bool checkImage(AsyncSnapshot<QuerySnapshot> snapshot, int index) {
-    grouping = snapshot.data?.docs[index]['grouping'];
+    setGroupingList(snapshot, index);
     List<int> converted = [];
     grouping?.forEach((element) {
       converted.add(element ?? 0);

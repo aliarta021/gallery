@@ -8,6 +8,8 @@
   "slogan": "With slogan",
   "skip": "Skip",
   "title": "Title",
+  "name": "Name",
+  "designed": "Designed By",
   "description": "Description",
   "date": {
     "assert": "Assert Date",

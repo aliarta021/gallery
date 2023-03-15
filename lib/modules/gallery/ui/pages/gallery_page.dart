@@ -66,11 +66,16 @@ class GalleryPage extends StatelessWidget {
                                           return context
                                                   .read<GalleryBloc>()
                                                   .checkImage(snapshot, index)
-                                              ? ImageViewWidget(
-                                                  index: index,
-                                                  bloc: bloc,
-                                                  snapshot: snapshot,
-                                                )
+                                              ? ChangeNotifierProvider.value(
+                                                  value: context
+                                                      .read<GalleryBloc>(),
+                                                  builder: (context, child) {
+                                                    return ImageViewWidget(
+                                                      index: index,
+                                                      bloc: bloc,
+                                                      snapshot: snapshot,
+                                                    );
+                                                  })
                                               : VideoPlayerWidget(
                                                   videoPath:
                                                       bloc.imageList[index],

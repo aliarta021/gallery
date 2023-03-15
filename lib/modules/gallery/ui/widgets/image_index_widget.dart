@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:revolution1401/common/router/app_router.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette_helper.dart';
 import 'package:revolution1401/modules/gallery/bloc/gallery_bloc.dart';
@@ -28,17 +29,22 @@ class ImageViewWidget extends StatelessWidget {
       },
       onTap: () {
         // context.go(R.imageDescriptionView,extra: snapshot,);
+        context.read<GalleryBloc>().setGroupingList(snapshot, index);
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ImageDescrptionView(
-              index: index,
-              snapshot: snapshot,
-              // image: bloc.imageList[index],
-              // controller: PageController(),
-              // items: bloc.imageList,
-              // selectedImage: index,
-            ),
+            builder: (ctx) => ChangeNotifierProvider.value(
+                value: context.read<GalleryBloc>(),
+                builder: (ctx, child) {
+                  return ImageDescrptionView(
+                    index: index,
+                    snapshot: snapshot,
+                    // image: bloc.imageList[index],
+                    // controller: PageController(),
+                    // items: bloc.imageList,
+                    // selectedImage: index,
+                  );
+                }),
           ),
         );
       },
