@@ -1,15 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:revolution1401/common/constants/app_config.dart';
 import 'package:revolution1401/common/localization/locale_keys.g.dart';
-import 'package:revolution1401/common/resources/resources.dart';
-import 'package:revolution1401/common/router/app_router.dart';
 import 'package:revolution1401/common/styles/colorPalette/color_palette.dart';
 import 'package:revolution1401/common/uikit/derafsh_logo.dart';
 import 'package:revolution1401/common/uikit/menu/cin_menu.dart';
 import 'package:revolution1401/common/utils/locale_helper.dart';
+import 'package:revolution1401/modules/map/ui/pages/map_page.dart';
 
 class HeaderSliverWidget extends StatelessWidget {
   const HeaderSliverWidget({required this.searchWidget, Key? key})
@@ -29,7 +27,13 @@ class HeaderSliverWidget extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                context.go(R.main);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (ctx) => const MapPage()
+                  ),
+                );
+                // context.go(R.main);
               },
               child: const DerafshLogoFa(
                 height: 38,
